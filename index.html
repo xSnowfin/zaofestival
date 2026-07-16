@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Lost in the Wind — 蔵王ジャンプ台フェスティバル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sora-fukaai: #16323f;      /* 深い蒼 - 夜空/雪山の陰 */
+  --sora-yoru: #0d232d;        /* さらに深い蒼 */
+  --juhyo-shiro: #f4f7f5;      /* 樹氷の白 */
+  --juhyo-usugumo: #e2e9e6;    /* 薄雲 */
+  --tomoshibi: #e0a951;        /* 灯の橙金 */
+  --tomoshibi-usu: #f0d9a8;
+  --torii-shu: #b2492f;        /* 鳥居の朱 */
+  --torii-shu-koi: #8f3620;
+  --komakusa: #c98fae;         /* コマクサのピンク（差し色として最小限） */
+  --line-hairline: rgba(244,247,245,0.16);
+  --shadow-fukai: 0 20px 60px rgba(5,15,20,0.45);
+  --font-mincho: 'Shippori Mincho', serif;
+  --font-gothic: 'Zen Kaku Gothic New', sans-serif;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+
+html,body{
+  height:100%;
+  background: var(--sora-yoru);
+  color: var(--juhyo-shiro);
+  font-family: var(--font-gothic);
+  overflow-x:hidden;
+}
+
+body{
+  background:
+    radial-gradient(ellipse 120% 60% at 50% -10%, rgba(224,169,81,0.10), transparent 60%),
+    radial-gradient(ellipse 80% 50% at 80% 100%, rgba(178,73,47,0.08), transparent 60%),
+    linear-gradient(180deg, var(--sora-fukaai) 0%, var(--sora-yoru) 100%);
+  min-height:100vh;
+  position:relative;
+}
+
+/* 雪片アニメーション背景 */
+.snowfall{ position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;}
+.snowfall span{
+  position:absolute; top:-5%;
+  width:4px; height:4px; border-radius:50%;
+  background: var(--juhyo-shiro);
+  opacity:0.5;
+  animation: fall linear infinite;
+}
+@keyframes fall{
+  to{ transform: translateY(110vh) translateX(20px); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .snowfall{display:none;}
+  *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+}
+
+#app{
+  position:relative; z-index:1;
+  max-width: 480px;
+  margin:0 auto;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ===== ヘッダー ===== */
+.app-header{
+  padding: 18px 20px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom: 1px solid var(--line-hairline);
+  position:sticky;
+  top:0;
+  background: rgba(13,35,45,0.86);
+  backdrop-filter: blur(10px);
+  z-index:10;
+}
+.app-header .brand{
+  font-family: var(--font-mincho);
+  font-weight:800;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--tomoshibi-usu);
+}
+.app-header .brand small{
+  display:block;
+  font-family: var(--font-gothic);
+  font-weight:400;
+  font-size: 9px;
+  letter-spacing:0.15em;
+  color: rgba(244,247,245,0.45);
+  margin-top:2px;
+}
+.header-icons{ display:flex; gap:10px; }
+.icon-btn{
+  width:36px; height:36px;
+  border-radius:10px;
+  border:1px solid var(--line-hairline);
+  background: rgba(244,247,245,0.04);
+  color: var(--juhyo-shiro);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  font-size:16px;
+  transition: background 0.2s, transform 0.15s;
+}
+.icon-btn:hover{ background: rgba(244,247,245,0.1); }
+.icon-btn:active{ transform: scale(0.94); }
+.icon-btn:focus-visible, button:focus-visible, input:focus-visible{
+  outline: 2px solid var(--tomoshibi);
+  outline-offset:2px;
+}
+
+/* ===== フッターナビ ===== */
+.tab-bar{
+  position:sticky; bottom:0;
+  display:flex;
+  border-top:1px solid var(--line-hairline);
+  background: rgba(13,35,45,0.92);
+  backdrop-filter: blur(10px);
+  z-index:10;
+}
+.tab-btn{
+  flex:1;
+  padding: 12px 6px 10px;
+  background:none; border:none;
+  color: rgba(244,247,245,0.45);
+  font-family: var(--font-gothic);
+  font-size: 10.5px;
+  letter-spacing:0.03em;
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  cursor:pointer;
+  transition: color 0.2s;
+}
+.tab-btn .tab-icon{ font-size:19px; }
+.tab-btn.active{ color: var(--tomoshibi); }
+.tab-btn.active .tab-icon{ filter: drop-shadow(0 0 8px rgba(224,169,81,0.5)); }
+
+/* ===== メインビュー ===== */
+.view{
+  flex:1;
+  padding: 20px 20px 28px;
+  display:none;
+  animation: viewIn 0.4s ease;
+}
+.view.active{ display:block; }
+@keyframes viewIn{
+  from{ opacity:0; transform: translateY(8px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+/* ===== 共通カード ===== */
+.card{
+  background: linear-gradient(160deg, rgba(244,247,245,0.055), rgba(244,247,245,0.02));
+  border:1px solid var(--line-hairline);
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:14px;
+}
+.eyebrow{
+  font-size:10.5px;
+  letter-spacing:0.14em;
+  color: var(--tomoshibi);
+  font-weight:700;
+  display:flex; align-items:center; gap:6px;
+  margin-bottom:8px;
+}
+.eyebrow::before{
+  content:'';
+  width:14px; height:1px;
+  background: var(--tomoshibi);
+  display:inline-block;
+}
+h2.section-title{
+  font-family: var(--font-mincho);
+  font-size:20px;
+  font-weight:700;
+  line-height:1.5;
+  margin-bottom:10px;
+  color: var(--juhyo-shiro);
+}
+p.lead{
+  font-size:13.5px;
+  line-height:1.9;
+  color: rgba(244,247,245,0.78);
+}
+
+/* ===== ストーリー画面（キャラクター吹き出し）===== */
+.story-scene{
+  display:flex; flex-direction:column; align-items:center;
+  padding: 6px 0 20px;
+}
+.character-badge{
+  width:88px; height:88px;
+  border-radius:50%;
+  background: radial-gradient(circle at 35% 30%, var(--tomoshibi-usu), var(--torii-shu) 75%);
+  display:flex; align-items:center; justify-content:center;
+  font-size:40px;
+  box-shadow: 0 10px 30px rgba(178,73,47,0.35), inset 0 -6px 14px rgba(0,0,0,0.2);
+  margin-bottom:12px;
+  border: 3px solid rgba(244,247,245,0.15);
+}
+.character-name{
+  font-family: var(--font-mincho);
+  font-weight:700;
+  font-size:14px;
+  color: var(--tomoshibi-usu);
+  letter-spacing:0.06em;
+}
+.character-name span{
+  font-size:10px;
+  color: rgba(244,247,245,0.5);
+  font-family: var(--font-gothic);
+  margin-left:6px;
+}
+.speech-bubble{
+  margin-top:14px;
+  background: rgba(244,247,245,0.06);
+  border:1px solid var(--line-hairline);
+  border-radius: 4px 16px 16px 16px;
+  padding:16px 18px;
+  font-size:14px;
+  line-height:2;
+  color: var(--juhyo-shiro);
+  position:relative;
+  min-height: 60px;
+}
+.typewriter-cursor{
+  display:inline-block; width:2px; height:1em; background: var(--tomoshibi);
+  vertical-align:text-bottom; animation: blink 0.9s step-end infinite;
+}
+@keyframes blink{ 50%{ opacity:0; } }
+
+.progress-strip{
+  display:flex; gap:6px; margin: 16px 0 4px;
+}
+.progress-dot{
+  flex:1; height:4px; border-radius:2px;
+  background: rgba(244,247,245,0.12);
+  overflow:hidden;
+}
+.progress-dot.done{ background: var(--tomoshibi); }
+.progress-dot.current{
+  background: linear-gradient(90deg, var(--tomoshibi) 50%, rgba(244,247,245,0.12) 50%);
+  background-size:200% 100%;
+  animation: progFill 1.2s ease forwards;
+}
+@keyframes progFill{ from{background-position:100% 0;} to{background-position:0 0;} }
+
+/* ===== ボタン ===== */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  width:100%;
+  padding: 14px 18px;
+  border-radius:12px;
+  border:none;
+  font-family: var(--font-gothic);
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:0.03em;
+  cursor:pointer;
+  transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+  margin-bottom:10px;
+}
+.btn:active{ transform: scale(0.98); }
+.btn-primary{
+  background: linear-gradient(135deg, var(--tomoshibi), #c9873b);
+  color: var(--sora-yoru);
+  box-shadow: 0 8px 24px rgba(224,169,81,0.25);
+}
+.btn-primary:hover{ box-shadow: 0 10px 30px rgba(224,169,81,0.35); }
+.btn-secondary{
+  background: rgba(244,247,245,0.06);
+  border:1px solid var(--line-hairline);
+  color: var(--juhyo-shiro);
+}
+.btn-secondary:hover{ background: rgba(244,247,245,0.12); }
+.btn-torii{
+  background: linear-gradient(135deg, var(--torii-shu), var(--torii-shu-koi));
+  color: var(--juhyo-shiro);
+  box-shadow: 0 8px 24px rgba(178,73,47,0.3);
+}
+.btn[disabled]{ opacity:0.35; cursor:not-allowed; }
+
+.choice-row{ display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+.choice-card{
+  text-align:left;
+  padding:15px 16px;
+  border-radius:12px;
+  border:1px solid var(--line-hairline);
+  background: rgba(244,247,245,0.03);
+  color: var(--juhyo-shiro);
+  font-family:var(--font-gothic);
+  cursor:pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+.choice-card:hover{ border-color: var(--tomoshibi); background: rgba(224,169,81,0.08); }
+.choice-card:active{ transform: scale(0.98); }
+.choice-card .cc-title{ font-weight:700; font-size:14px; margin-bottom:4px; }
+.choice-card .cc-desc{ font-size:11.5px; color: rgba(244,247,245,0.55); line-height:1.6; }
+
+/* ===== 謎パズル ===== */
+.puzzle-box{
+  background: rgba(13,35,45,0.5);
+  border:1px dashed rgba(224,169,81,0.4);
+  border-radius:14px;
+  padding:18px;
+  text-align:center;
+  margin: 14px 0;
+}
+.puzzle-visual{
+  font-size:15px;
+  letter-spacing:0.12em;
+  color: var(--tomoshibi-usu);
+  font-family: var(--font-mincho);
+  line-height:2.2;
+  margin-bottom:6px;
+}
+.hint-toggle{
+  font-size:11.5px;
+  color: rgba(244,247,245,0.5);
+  background:none; border:none;
+  text-decoration:underline;
+  cursor:pointer;
+  padding:4px;
+}
+.hint-box{
+  margin-top:10px;
+  font-size:12px;
+  line-height:1.8;
+  color: var(--komakusa);
+  background: rgba(201,143,174,0.08);
+  border-radius:10px;
+  padding:10px 12px;
+  display:none;
+}
+.hint-box.show{ display:block; }
+
+.answer-input-row{ display:flex; gap:8px; margin-top:14px; }
+input[type="text"]{
+  flex:1;
+  padding: 13px 14px;
+  border-radius:10px;
+  border:1px solid var(--line-hairline);
+  background: rgba(244,247,245,0.05);
+  color: var(--juhyo-shiro);
+  font-family: var(--font-gothic);
+  font-size:14px;
+}
+input[type="text"]::placeholder{ color: rgba(244,247,245,0.35); }
+.answer-check-btn{
+  padding: 0 18px;
+  border-radius:10px;
+  border:none;
+  background: var(--tomoshibi);
+  color: var(--sora-yoru);
+  font-weight:700;
+  cursor:pointer;
+  font-size:13px;
+}
+.feedback-msg{
+  font-size:12.5px; margin-top:10px; min-height:18px;
+  font-weight:700;
+}
+.feedback-msg.ok{ color:#8fd4a8; }
+.feedback-msg.ng{ color:#e08a8a; }
+
+/* ===== QR探索マップ ===== */
+.map-wrap{
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--line-hairline);
+  background: linear-gradient(160deg, #1c3f4d, #0f2731);
+  aspect-ratio: 4/5;
+  margin-bottom:14px;
+}
+.map-svg{ width:100%; height:100%; display:block; }
+.map-pin{
+  cursor:pointer;
+  transition: transform 0.2s;
+  transform-origin:center;
+}
+.map-pin:hover{ transform: scale(1.15); }
+.map-pin.found circle.pin-body{ fill: rgba(143,212,168,0.3) !important; stroke:#8fd4a8 !important; }
+.map-pin.locked{ opacity:0.4; cursor:not-allowed; }
+.map-pin.locked:hover{ transform:none; }
+
+.qr-scan-box{
+  border:2px dashed rgba(224,169,81,0.5);
+  border-radius:14px;
+  padding:22px;
+  text-align:center;
+}
+.qr-scan-box .qr-icon{ font-size:34px; margin-bottom:8px; }
+.qr-scan-box p{ font-size:12px; color: rgba(244,247,245,0.55); margin-bottom:12px; line-height:1.7;}
+
+.route-badge{
+  display:inline-block;
+  padding: 4px 12px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.04em;
+  margin-bottom:12px;
+}
+.route-badge.yuuki{ background: rgba(178,73,47,0.2); color:#e8a084; border:1px solid rgba(178,73,47,0.4); }
+.route-badge.yukemuri{ background: rgba(94,163,181,0.2); color:#9fd4e3; border:1px solid rgba(94,163,181,0.4); }
+
+/* ===== 冒険の書 ===== */
+.notebook-tabs{
+  display:flex; gap:6px; overflow-x:auto;
+  margin-bottom:14px;
+  padding-bottom:4px;
+}
+.notebook-tabs::-webkit-scrollbar{ height:4px; }
+.notebook-tabs::-webkit-scrollbar-thumb{ background: rgba(244,247,245,0.2); border-radius:2px; }
+.ntab{
+  flex-shrink:0;
+  padding: 8px 14px;
+  border-radius:20px;
+  border:1px solid var(--line-hairline);
+  background: rgba(244,247,245,0.04);
+  color: rgba(244,247,245,0.6);
+  font-size:12px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.ntab.active{ background: var(--tomoshibi); color: var(--sora-yoru); font-weight:700; border-color:transparent; }
+.notebook-page{ display:none; }
+.notebook-page.active{ display:block; animation: viewIn 0.3s ease; }
+.fact-item{
+  padding:12px 0;
+  border-bottom:1px solid var(--line-hairline);
+}
+.fact-item:last-child{ border-bottom:none; }
+.fact-item .fi-title{ font-weight:700; font-size:13.5px; margin-bottom:4px; color: var(--tomoshibi-usu); }
+.fact-item .fi-body{ font-size:12.5px; line-height:1.8; color: rgba(244,247,245,0.7); }
+
+.feather-log{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+.feather-chip{
+  padding:7px 12px;
+  border-radius:20px;
+  background: rgba(224,169,81,0.12);
+  border:1px solid rgba(224,169,81,0.3);
+  font-size:11.5px;
+  color: var(--tomoshibi-usu);
+}
+.feather-chip.empty{ color: rgba(244,247,245,0.3); border-style:dashed; background:none; }
+
+/* ===== エンディング ===== */
+.ending-hero{
+  text-align:center;
+  padding: 30px 10px 10px;
+}
+.ending-hero .em{ font-size:48px; margin-bottom:12px; }
+.ending-hero h2{
+  font-family:var(--font-mincho);
+  font-size:22px;
+  color: var(--tomoshibi-usu);
+  margin-bottom:10px;
+}
+
+/* トップ画面のヒーロー */
+.top-hero{
+  padding: 10px 0 4px;
+}
+.top-hero .kakuji{
+  font-family: var(--font-mincho);
+  font-weight:800;
+  font-size:28px;
+  line-height:1.5;
+  letter-spacing:0.04em;
+  margin-bottom:10px;
+  background: linear-gradient(135deg, var(--juhyo-shiro), var(--tomoshibi-usu));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.top-hero .sub{
+  font-size:12.5px;
+  color: rgba(244,247,245,0.55);
+  line-height:1.8;
+  margin-bottom:22px;
+}
+.stat-row{ display:flex; gap:10px; margin-bottom:20px; }
+.stat-box{
+  flex:1; text-align:center;
+  padding:12px 6px;
+  border-radius:12px;
+  background: rgba(244,247,245,0.04);
+  border:1px solid var(--line-hairline);
+}
+.stat-box .num{ font-family:var(--font-mincho); font-size:20px; color:var(--tomoshibi); font-weight:700; }
+.stat-box .lbl{ font-size:9.5px; color: rgba(244,247,245,0.5); margin-top:2px; }
+
+.scroll-fade{ height:1px; }
+ruby rt {
+    font-size: 0.55em;
+    user-select: none;
+}
+</style>
+</head>
+<body>
+
+<div class="snowfall" id="snowfall"></div>
+
+<div id="app">
+  <header class="app-header">
+    <div class="brand">Lost in the Wind<small>蔵王ジャンプ台フェスティバル</small></div>
+    <div class="header-icons">
+      <button class="icon-btn" id="restartBtn" title="最初から" aria-label="最初からやり直す">↺</button>
+    </div>
+  </header>
+
+  <!-- ================= TOP ================= -->
+  <section class="view active" id="view-top">
+    <div class="top-hero">
+      <div class="kakuji"><ruby>羽団扇の<rt>はうちわ</rt></ruby><br>羽根を、探せ。</div>
+      <p class="sub"><ruby>修行中<rt>しゅぎょうちゅう</rt></ruby>の<ruby>小天狗<rt>こてんぐ</rt></ruby>「<ruby>疾風丸<rt>はやてまる</rt></ruby>」が、強風で飛ばしてしまった羽根を探している。<br>会場を巡り、謎を解き、QRコードを見つけよう。</p>
+    </div>
+
+    <div class="stat-row" id="topStats">
+      <div class="stat-box"><div class="num" id="statFeathers">0/3</div><div class="lbl">集めた羽根</div></div>
+      <div class="stat-box"><div class="num" id="statRoute">未選択</div><div class="lbl">選んだ道</div></div>
+      <div class="stat-box"><div class="num" id="statQR">0/3</div><div class="lbl">発見QR</div></div>
+    </div>
+
+    <button class="btn btn-primary" id="startBtn"><ruby>冒険<rt>ぼうけん</rt></ruby>の書を受け取る</button>
+    <button class="btn btn-secondary" id="continueBtn" style="display:none;">つづきから再開する</button>
+
+    <div class="card" style="margin-top:8px;">
+      <div class="eyebrow">遊び方</div>
+      <p class="lead">① 物語を読んで謎を解く　② 冒険の書のヒントを確認する　③ 会場でQRコードを探す　④ 読み取って物語を進める。この4つを繰り返して、羽根を集めよう。</p>
+    </div>
+  </section>
+
+  <!-- ================= STORY ================= -->
+  <section class="view" id="view-story">
+    <div class="progress-strip" id="progressStrip"></div>
+    <div class="story-scene">
+      <div class="character-badge" id="charEmoji">🐦</div>
+      <div class="character-name" id="charName">疾風丸<span>小天狗（修行中）</span></div>
+      <div class="speech-bubble" id="storyText"></div>
+    </div>
+    <div id="storyChoices" class="choice-row"></div>
+    <button class="btn btn-primary" id="storyNextBtn" style="display:none;">次へ</button>
+  </section>
+
+  <!-- ================= PUZZLE ================= -->
+  <section class="view" id="view-puzzle">
+    <div class="eyebrow" id="puzzleRouteLabel">謎</div>
+    <h2 class="section-title" id="puzzleTitle">謎その一</h2>
+    <p class="lead" id="puzzleDesc"></p>
+
+    <div class="puzzle-box">
+      <div class="puzzle-visual" id="puzzleVisual"></div>
+      <button class="hint-toggle" id="hintToggle">ヒントを見る（冒険の書より）</button>
+      <div class="hint-box" id="hintBox"></div>
+    </div>
+
+    <div class="answer-input-row">
+      <input type="text" id="answerInput" placeholder="答えを入力…" aria-label="謎の答え" autocomplete="off">
+      <button class="answer-check-btn" id="answerCheckBtn">解答</button>
+    </div>
+    <div class="feedback-msg" id="answerFeedback"></div>
+    <button class="btn btn-secondary" id="puzzleBackBtn" style="margin-top:16px;">地図に戻る（あとで挑戦する）</button>
+  </section>
+
+  <!-- ================= MAP / QR SEARCH ================= -->
+  <section class="view" id="view-map">
+    <span class="route-badge" id="mapRouteBadge"></span>
+    <h2 class="section-title">QRコードを探そう</h2>
+    <p class="lead" style="margin-bottom:6px;">冒険の書の簡易マップに示された「×印」を頼りに、会場に散らばった3つのQRコードを、好きな順番で探し出そう。見つけたらタップして読み取ろう。</p>
+    <p class="lead" id="mapProgressLabel" style="margin-bottom:14px; color: var(--tomoshibi-usu); font-weight:700;"></p>
+
+    <div class="map-wrap">
+      <svg class="map-svg" viewBox="0 0 300 375" id="mapSvg"></svg>
+    </div>
+
+    <div class="qr-scan-box" id="qrScanBox" style="display:none;">
+      <div class="qr-icon">▦</div>
+      <p id="qrScanLabel">QRコードを見つけた地点をタップしたね。<br>読み取ってみよう。</p>
+      <button class="btn btn-torii" id="qrScanConfirm">QRコードを読み取る</button>
+      <button class="btn btn-secondary" id="qrScanCancel">やめる</button>
+    </div>
+  </section>
+
+  <!-- ================= ENDING SELECT ================= -->
+  <section class="view" id="view-ending-select">
+    <div class="story-scene">
+      <div class="character-badge" style="background: radial-gradient(circle at 35% 30%, var(--juhyo-shiro), #9fb8c2 75%);">👴</div>
+      <div class="character-name">白嶺坊<span>疾風丸の師匠</span></div>
+      <div class="speech-bubble" id="masterText"></div>
+    </div>
+    <div class="choice-row" id="endingChoices"></div>
+  </section>
+
+  <!-- ================= ENDING RESULT ================= -->
+  <section class="view" id="view-ending-result">
+    <div class="ending-hero">
+      <div class="em" id="endEmoji">🪶</div>
+      <h2 id="endTitle"></h2>
+    </div>
+    <div class="card">
+      <p class="lead" id="endBody"></p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">今回の記録</div>
+      <div class="feather-log" id="endSummary"></div>
+    </div>
+    <button class="btn btn-primary" id="playAgainBtn">別のルートに挑戦する</button>
+  </section>
+
+  <!-- ================= NOTEBOOK ================= -->
+  <section class="view" id="view-notebook">
+    <h2 class="section-title">冒険の書</h2>
+    <div class="notebook-tabs" id="notebookTabs"></div>
+    <div id="notebookPages"></div>
+  </section>
+
+  <nav class="tab-bar">
+    <button class="tab-btn active" data-view="view-top"><span class="tab-icon">⛩</span>ホーム</button>
+    <button class="tab-btn" data-view="view-notebook"><span class="tab-icon">📖</span>冒険の書</button>
+    <button class="tab-btn" data-view="view-map" id="tabMap"><span class="tab-icon">🗺</span>探索</button>
+  </nav>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
