@@ -213,12 +213,19 @@ function renderTop(){
 
   const hasSave = state.phase !== "intro" || state.route !== null;
   $("#continueBtn").style.display = hasSave ? "inline-flex" : "none";
-  $("#startBtn").textContent = hasSave ? "はじめから遊び直す" : "冒険の書を受け取る";
+  //常に同じ文字を表示
+  $("#startBtn").textContent ="冒険の書を受け取る"; 
+  $("#startBtn").style.display = hasSave ? "none" : "inline-flex";
 }
 
 $("#startBtn").addEventListener("click", () => {
-  resetState();
-  beginIntro();
+  const hasSave = state.phase !== "intro" || state.route !== null;
+
+  if(hasSave){
+    resumeFromState();
+  }else{
+    beginIntro();
+  }
 });
 $("#continueBtn").addEventListener("click", () => {
   resumeFromState();
@@ -572,9 +579,8 @@ function renderEndingResult(key){
 }
 
 $("#playAgainBtn").addEventListener("click", () => {
-  resetState();
-  showView("top");
-  renderTop();
+  /* ゲームクリア後のアンケート画面 */
+  window.open("https://example.com", "_blank");
 });
 
 /* ---------------- 冒険の書（ノートブック） ---------------- */
