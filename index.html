@@ -505,6 +505,146 @@ ruby rt {
     font-size: 0.55em;
     user-select: none;
 }
+/* ==========================================
+   シネマティック演出
+========================================== */
+.cinematic{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  opacity:1;
+  transition:opacity .8s;
+  background:#08151c;
+}
+.cinematic.hidden{ opacity:0; pointer-events:none; }
+
+/* 背景 */
+.cinematic-bg{
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at center, rgba(224,169,81,.18), rgba(13,35,45,.97));
+  animation: bgZoom 6s linear infinite;
+}
+
+/* 光 */
+.cinematic-light{
+  position:absolute;
+  width:220vw;
+  height:220vw;
+  background: linear-gradient(120deg, transparent 45%, rgba(255,255,255,.05) 50%, transparent 55%);
+  animation: lightMove 6s linear infinite;
+}
+
+/* 本文 */
+.cinematic-content{
+  position:relative;
+  text-align:center;
+  padding:30px;
+  animation: fadeZoom .8s ease;
+}
+.cine-icon{
+  font-size:90px;
+  margin-bottom:25px;
+  animation: float 2.5s ease-in-out infinite;
+}
+#cineTitle{
+  font-family: var(--font-mincho);
+  font-size:42px;
+  letter-spacing:.08em;
+  color: var(--juhyo-shiro);
+  margin-bottom:12px;
+}
+#cineSubTitle{
+  font-family: var(--font-mincho);
+  font-size:24px;
+  color: var(--tomoshibi-usu);
+  margin-bottom:25px;
+  font-weight:700;
+}
+#cineText{
+  font-size:15px;
+  color: rgba(255,255,255,.75);
+  letter-spacing:.08em;
+}
+
+/* アニメーション */
+@keyframes float{
+  0%,100%{ transform: translateY(0px); }
+  50%{ transform: translateY(-15px); }
+}
+@keyframes fadeZoom{
+  from{ opacity:0; transform: scale(.85); }
+  to{ opacity:1; transform: scale(1); }
+}
+@keyframes bgZoom{
+  0%{ transform: scale(1); }
+  100%{ transform: scale(1.2); }
+}
+@keyframes lightMove{
+  0%{ transform: translateX(-40%) rotate(20deg); }
+  100%{ transform: translateX(40%) rotate(20deg); }
+}
+
+#charEmoji{ animation: floating 3s ease-in-out infinite; }
+@keyframes floating{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-10px); }
+  100%{ transform: translateY(0); }
+}
+
+/* 羽根 */
+.feather-effect{
+  position:fixed;
+  left:50%;
+  top:-100px;
+  font-size:80px;
+  animation: featherFall 3s ease forwards;
+  z-index:9999;
+}
+@keyframes featherFall{
+  0%{ opacity:0; transform: translateX(0) translateY(0) rotate(0deg); }
+  30%{ opacity:1; transform: translateX(-40px) translateY(150px) rotate(-30deg); }
+  60%{ transform: translateX(30px) translateY(300px) rotate(30deg); }
+  100%{ opacity:1; transform: translateX(0) translateY(420px) rotate(0deg); }
+}
+.ending-feather{
+  position:fixed;
+  top:-50px;
+  font-size:40px;
+  pointer-events:none;
+  z-index:999;
+  animation:
+  endingFall 5s linear forwards,
+  endingSwing 2s ease-in-out infinite;
+}
+@keyframes endingFall{
+  0%{
+    transform:translateY(0);
+    opacity:0;
+  }
+  20%{
+    opacity:1;
+  }
+  100%{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+}
+@keyframes endingSwing{
+  0%{
+    margin-left:0;
+  }
+  50%{
+    margin-left:30px;
+  }
+  100%{
+    margin-left:-30px;
+  }
+}
 </style>
 </head>
 <body>
@@ -595,7 +735,7 @@ ruby rt {
   <!-- ================= ENDING SELECT ================= -->
   <section class="view" id="view-ending-select">
     <div class="story-scene">
-      <div class="character-badge" style="background: radial-gradient(circle at 35% 30%, var(--juhyo-shiro), #9fb8c2 75%);">👴</div>
+      <div class="character-badge" style="background: radial-gradient(circle at 35% 30%, var(--juhyo-shiro), #9fb8c2 75%);">🦅</div>
       <div class="character-name">白嶺坊<span>疾風丸の師匠</span></div>
       <div class="speech-bubble" id="masterText"></div>
     </div>
@@ -632,6 +772,17 @@ ruby rt {
   </nav>
 </div>
 
+<!-- ===== シネマティック演出 ===== -->
+<div id="cinematic" class="cinematic hidden">
+  <div class="cinematic-bg"></div>
+  <div class="cinematic-light"></div>
+  <div class="cinematic-content">
+    <div id="cineIcon" class="cine-icon">🌬</div>
+    <h1 id="cineTitle">Lost in the Wind</h1>
+    <h2 id="cineSubTitle">羽団扇の羽根を探せ</h2>
+    <p id="cineText">風が吹き始める……</p>
+  </div>
+</div>
 <script src="game.js"></script>
 </body>
 </html>

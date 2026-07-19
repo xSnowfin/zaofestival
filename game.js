@@ -91,7 +91,7 @@ const ROUTES = {
 // ストーリー：導入 → ルート選択 → (自由順序で3つのQR/謎) → 最終選択 → エンディング
 const STORY = {
   intro: [
-    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"あっ…！ようこそ、蔵王ジャンプ台フェスティバルへ。ぼくは<ruby>修行中<rt>しゅぎょうちゅう</rt></ruby>の<ruby>小天狗<rt>こてんぐ</rt></ryby>、<ruby>疾風丸<rt>はやてまる</rt></ruby>だ。実は困ったことになっていて…" },
+    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"あっ…！ようこそ、蔵王ジャンプ台フェスティバルへ。ぼくは<ruby>修行中<rt>しゅぎょうちゅう</rt></ruby>の<ruby>小天狗<rt>こてんぐ</rt></ruby>、<ruby>疾風丸<rt>はやてまる</rt></ruby>だ。実は困ったことになっていて…" },
     { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"<ruby>師匠<rt>ししょう</rt></ruby>からお借りした大切な「羽団扇（はうちわ）」の羽根が、強い風で吹き飛ばされてしまったんだ。会場のあちこちに散らばってしまった…！" },
     { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"きみの力を貸してほしい。この「<ruby>冒険<rt>ぼうけん</rt></ruby>の書」を渡すから、会場に散らばったQRコードを見つけて、謎を解きながら羽根を探してくれないか？ <ruby>順番<rt>じゅんばん</rt></ruby>はどこからでも<ruby>構<rt>かま</rt></ruby>わないよ。" },
   ],
@@ -116,7 +116,7 @@ const ENDINGS = {
 
 /* ---------------- 状態管理 ---------------- */
 
-const STORAGE_KEY = "lostinthewind_save_v2";
+const STORAGE_KEY = "lostinthewind_save_v3";
 
 let state = {
   route: null,             // 'yuuki' | 'yukemuri'
@@ -220,11 +220,12 @@ function renderTop(){
 
 $("#startBtn").addEventListener("click", () => {
   const hasSave = state.phase !== "intro" || state.route !== null;
-
   if(hasSave){
     resumeFromState();
-  }else{
-    beginIntro();
+  } else {
+    playCinematic("🌬", "Lost in the Wind", "羽団扇の羽根を探せ", "風が吹き始める……", () => {
+      beginIntro();
+    });
   }
 });
 $("#continueBtn").addEventListener("click", () => {
@@ -239,16 +240,69 @@ $("#restartBtn").addEventListener("click", () => {
 });
 
 /* ---------------- ストーリー進行 ---------------- */
+/* ---------------- シネマティック演出 ---------------- */
+
+function playCinematic(icon, title, subtitle, text, next){
+  const cine = $("#cinematic");
+  $("#cineIcon").textContent = icon;
+  $("#cineTitle").textContent = title;
+  $("#cineSubTitle").textContent = subtitle;
+  $("#cineText").textContent = text;
+
+  cine.classList.remove("hidden");
+  setTimeout(() => {
+    cine.classList.add("hidden");
+    setTimeout(() => { if(next) next(); }, 800);
+  }, 3000);
+}
 
 let typewriterTimer = null;
 
-function typewriterText(el, text, onDone){
-    clearInterval(typewriterTimer);
-    el.innerHTML = text;
+function typewriterText(el,text,onDone){
+  clearInterval(typewriterTimer);
+  let i=0;
+  el.innerHTML="";
+  typewriterTimer=setInterval(()=>{
+    el.innerHTML=text.slice(0,i);
+    i++;
+    if(i>text.length){
+      clearInterval(typewriterTimer);
+      if(onDone) onDone();
+    }
 
-    if(onDone) onDone();
+  },35);
+
 }
 
+function showFeatherEffect(next){
+  const feather=document.createElement("div");
+  feather.className="feather-effect";
+  feather.textContent="🪶";
+  document.body.appendChild(feather);
+  setTimeout(()=>{
+    feather.remove();
+    if(next) next();
+  },3000);
+}
+
+
+function showEndingFeathers(){
+  for(let i=0;i<30;i++){
+    setTimeout(()=>{
+      const feather=document.createElement("div");
+      feather.className="ending-feather";
+      feather.textContent="🪶";
+      feather.style.left=
+      Math.random()*100+"vw";
+      document.body.appendChild(feather);
+      setTimeout(()=>{
+        feather.remove();
+      },5000);
+    },i*100);
+
+  }
+
+}
 function renderProgressStrip(current, total){
   const strip = $("#progressStrip");
   strip.innerHTML = "";
@@ -321,11 +375,15 @@ function showRouteChoice(){
 
 function resumeFromState(){
   if(!state.route){
-    beginIntro();
+    playCinematic("🌬", "Lost in the Wind", "羽団扇の羽根を探す冒険が始まる", "風が吹き始める……", () => {
+      beginIntro();
+    });
     return;
   }
   if(state.phase === "endingSelect"){
-    goToEndingSelect();
+    playCinematic("🪶🪶🪶", "羽団扇が完成した", "師匠のもとへ向かおう", () => {
+      showMasterScene();
+    });
   } else if(state.phase === "endingResult" && state.endingKey){
     renderEndingResult(state.endingKey);
     showView("endingResult");
@@ -469,15 +527,16 @@ function checkAnswer(){
   const correct = spot.answer.some(a => a.replace(/\s/g,"") === normalized);
   const fb = $("#answerFeedback");
   if(correct){
-    fb.textContent = "正解！ 冒険の書に記録しよう。";
-    fb.className = "feedback-msg ok";
-    $("#answerInput").disabled = true;
-    $("#answerCheckBtn").disabled = true;
-    setTimeout(() => {
-      $("#answerInput").disabled = false;
-      $("#answerCheckBtn").disabled = false;
-      showFeatherStory(spot);
-    }, 700);
+    if(!state.solvedSpotIds.includes(spot.id)){
+      state.solvedSpotIds.push(spot.id);
+    }
+    saveState();
+
+    playCinematic("🪶", "羽根を見つけた", "Feather Found", "疾風丸の羽団扇に必要な羽根だ。", () => {
+      showFeatherEffect(() => {
+        showFeatherStory(spot);
+      });
+    });
   } else {
     fb.textContent = "うーん、違うようだ。冒険の書のヒントをもう一度確かめてみて。";
     fb.className = "feedback-msg ng";
@@ -489,37 +548,61 @@ $("#answerInput").addEventListener("keydown", (e) => { if(e.key === "Enter") che
 /* ---------------- 羽根獲得ストーリー ---------------- */
 
 function showFeatherStory(spot){
-  if(!state.solvedSpotIds.includes(spot.id)){
-    state.solvedSpotIds.push(spot.id);
+  continueFeatherStory();
+  function continueFeatherStory(){
+    state.phase = "story-inline";
+    saveState();
+
+    const route = currentRoute();
+    const total = route.spots.length;
+
+    showView("story");
+    renderProgressStrip(state.solvedSpotIds.length, total);
+
+    $("#charEmoji").textContent = "🪶";
+    $("#charName").innerHTML = "疾風丸<span>小天狗（修行中）</span>";
+    $("#storyChoices").innerHTML = "";
+    $("#storyNextBtn").style.display = "none";
+
+    typewriterText($("#storyText"), spot.story + "\n\n羽根を1枚、見つけた！", () => {
+      $("#storyNextBtn").style.display = "inline-flex";
+
+      const complete = state.solvedSpotIds.length >= total;
+      $("#storyNextBtn").textContent = complete ? "師匠のもとへ向かう" : "地図に戻る";
+
+      $("#storyNextBtn").onclick = () => {
+        if(complete){
+          playCinematic("🪶🪶🪶", "羽団扇が完成した", "The Wind Returns", "師匠のもとへ向かおう", () => {
+            showMasterScene();
+          });
+        } else {
+          goToMap();
+        }
+      };
+    });
   }
-  state.phase = "story-inline";
-  saveState();
-
-  const route = currentRoute();
-  const total = route.spots.length;
-
-  showView("story");
-  renderProgressStrip(state.solvedSpotIds.length, total);
-  $("#charEmoji").textContent = "🪶";
-  $("#charName").innerHTML = "疾風丸<span>小天狗（修行中）</span>";
-  $("#storyChoices").innerHTML = "";
-  $("#storyNextBtn").style.display = "none";
-
-  typewriterText($("#storyText"), spot.story + "\n\n羽根を1枚、見つけた！", () => {
-    $("#storyNextBtn").style.display = "inline-flex";
-    const isComplete = state.solvedSpotIds.length >= total;
-    $("#storyNextBtn").textContent = isComplete ? "師匠のもとへ向かう" : "地図に戻る";
-    $("#storyNextBtn").onclick = () => {
-      renderTop();
-      if(isComplete){
-        goToEndingSelect();
-      } else {
-        goToMap();
-      }
-    };
-  });
 }
+function showMasterScene(){
+  showView("story");
+  $("#charEmoji").textContent="🦅";
+  $("#charName").innerHTML=
+  "<ruby>白嶺坊<rt>はくれいぼう</rt></ruby><span>蔵王の大天狗</span>";
+  $("#storyChoices").innerHTML="";
+  $("#storyNextBtn").style.display="none";
 
+  typewriterText(
+    $("#storyText"),
+    "見事だ。\n\n三枚の羽根は再び一つとなった。\n\n疾風丸、お前も良き旅人に出会えたようだ。",
+
+    ()=>{
+      $("#storyNextBtn").style.display="inline-flex";
+      $("#storyNextBtn").textContent="羽団扇をどうする？";
+      $("#storyNextBtn").onclick=()=>{
+        goToEndingSelect();
+      };
+    }
+  );
+}
 /* ---------------- 最終選択・エンディング ---------------- */
 
 function goToEndingSelect(){
@@ -539,15 +622,22 @@ function goToEndingSelect(){
       opts.forEach(opt => {
         const btn = document.createElement("button");
         btn.className = "choice-card";
-        btn.innerHTML = `<div class="cc-title">${opt.title}</div><div class="cc-desc">${opt.desc}</div>`;
+        btn.innerHTML = `
+          <div class="cc-title">${opt.title}</div>
+          <div class="cc-desc">${opt.desc}</div>
+        `;
+
         btn.addEventListener("click", () => {
-          state.endingKey = opt.key;
-          state.phase = "endingResult";
-          saveState();
-          renderEndingResult(opt.key);
-          showView("endingResult");
-          renderTop();
+          playCinematic("🕊", "ありがとう", "Thank You", "羽根は再び風とともに還る", () => {
+            state.endingKey = opt.key;
+            state.phase = "endingResult";
+            saveState();
+            renderEndingResult(opt.key);
+            showView("endingResult");
+            showEndingFeathers();
+          });
         });
+
         box.appendChild(btn);
       });
     }
