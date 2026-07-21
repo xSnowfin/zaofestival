@@ -263,20 +263,65 @@ function playCinematic(icon, title, subtitle, text, next){
 
 let typewriterTimer = null;
 
-function typewriterText(el,text,onDone){
+function typewriterText(el, text, onDone) {
   clearInterval(typewriterTimer);
-  let i=0;
-  el.innerHTML="";
-  typewriterTimer=setInterval(()=>{
-    el.innerHTML=text.slice(0,i);
-    i++;
-    if(i>text.length){
-      clearInterval(typewriterTimer);
-      if(onDone) onDone();
+
+  // 1. 一時的なDOM要素を作成してHTML構造を安全にパース
+  const temp = document.createElement('div');
+  temp.innerHTML = text;
+
+  // 2. ノードを再帰的に走査し、タイピング対象の本文テキストのみ span.tw-char で囲む
+  function prepareNodes(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const chars = Array.from(node.textContent);
+      const frag = document.createDocumentFragment();
+      chars.forEach(c => {
+        const span = document.createElement('span');
+        span.className = 'tw-char';
+        span.style.visibility = 'hidden'; // 初期状態は非表示
+        span.textContent = c;
+        frag.appendChild(span);
+      });
+      node.parentNode.replaceChild(frag, node);
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      const tagName = node.tagName.toLowerCase();
+      if (tagName === 'rt') {
+        // ルビテキストはタイピングカウントから外し、初期状態を非表示にする
+        node.style.visibility = 'hidden';
+        return;
+      }
+      Array.from(node.childNodes).forEach(prepareNodes);
     }
+  }
 
-  },30);
+  Array.from(temp.childNodes).forEach(prepareNodes);
+  el.innerHTML = temp.innerHTML;
 
+  // 3. タイピング対象の文字（span.tw-char）を取得
+  const charSpans = Array.from(el.querySelectorAll('.tw-char'));
+  let index = 0;
+
+  // 4. 順々に文字を表示するタイマー処理
+  typewriterTimer = setInterval(() => {
+    if (index < charSpans.length) {
+      const currentSpan = charSpans[index];
+      currentSpan.style.visibility = 'visible';
+
+      // 親文字が表示されたタイミングで、その <ruby> 内のルビ（<rt>）も同時に表示
+      const parentRuby = currentSpan.closest('ruby');
+      if (parentRuby) {
+        const rt = parentRuby.querySelector('rt');
+        if (rt) rt.style.visibility = 'visible';
+      }
+
+      index++;
+    } else {
+      clearInterval(typewriterTimer);
+      // 完了時に万が一非表示のルビが残っていれば全表示
+      el.querySelectorAll('rt').forEach(rt => rt.style.visibility = 'visible');
+      if (onDone) onDone();
+    }
+  }, 30);
 }
 
 function showStoryChoices(choices){
