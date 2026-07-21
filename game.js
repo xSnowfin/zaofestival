@@ -47,7 +47,7 @@ const ROUTES = {
         visual:"<ruby>蔵王<rt>ざおう</rt></ruby>ジャンプ台で<ruby>髙梨沙羅選手<rt>たかなしさらせんしゅ</rt></ruby>が<ruby>記録<rt>きろく</rt></ruby>した<ruby>最高<rt>さいこう</rt></ruby>の<ruby>飛距離<rt>ひきょり</rt></ruby>は何m？",
         hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のジャンプ台のところを見てみよう。<ruby>詳<rt>くわ</rt></ruby>しい<ruby>数値<rt>すうち</rt></ruby>が書いてあるよ。ジャンプ台の<ruby>看板<rt>かんばん</rt></ruby>にもヒントがあるかも...",
         answer:["106.0","106","１０６","１０６.０", "106メートル"],
-        story:"まるでスキーヤーが空を<ruby>舞<rt>ま</rt></ruby>うように、<ruby>最後<rt>さいご</rt></ruby>の一枚の羽根が風に乗ってあなたのもとへ飛んできた。",
+        story:"まるでスキーヤーが空を<ruby>舞<rt>ま</rt></ruby>うように、一枚の羽根が風に乗ってあなたのもとへ飛んできた。",
       },
       {
        id: "k4", name: "ジャンプ台の謎", x: 400, y: 200,
@@ -146,12 +146,12 @@ const ENDINGS = {
   all_return: {
     emoji:"🕊",
     title:"すべてを、あるべき場所へ",
-    body:"三枚の羽根をすべて<ruby>疾風丸<rt>はやてまる</rt></ruby>に返すと、<ruby>白嶺坊<rt>はくれいぼう</rt></ruby>は静かにうなずいた。「よくぞ、風に惑わされず届けてくれた」。<ruby>羽団扇<rt>はうちわ</rt></ruby>は再び師匠の手に渡り、蔵王の風は穏やかに凪いだという。疾風丸は深々と頭を下げ、いつか一人前の天狗になったら、また会いに来ると約束してくれた。",
+    body:"三枚の羽根をすべて<ruby>疾風丸<rt>はやてまる</rt></ruby>に返すと、<ruby>白嶺坊<rt>はくれいぼう</rt></ruby>は静かにうなずいた。「よくぞ、風に<ruby>惑<rt>まど</rt></ruby>わされず届けてくれた」。<ruby>羽団扇<rt>はうちわ</rt></ruby>は再び<ruby>師匠<rt>ししょう</rt></ruby>の手に<ruby>渡<rt>わた</rt></ruby>り、蔵王の風は<ruby>穏<rt>おだ</rt></ruby>やかに凪いだという。<ruby>疾風丸<rt>はやてまる</rt></ruby>は<ruby>深々<rt>ふかぶか</rt></ruby>と頭を下げ、いつか一人前の<ruby>天狗<rt>てんぐ</rt></ruby>になったら、また会いに来ると<ruby>約束<rt>やくそく</rt></ruby>してくれた。",
   },
   keep_one: {
     emoji:"🪶",
     title:"一枚の羽根と、約束",
-    body:"二枚の羽根を返し、一枚だけを手元に残すことにした。<ruby>白嶺坊<rt>はくれいぼう</rt></ruby>は少し驚いた顔をしたあと、優しく微笑んだ。「その羽根は、きみと<ruby>疾風丸<rt>はやてまる</rt></ruby>を結ぶ<ruby>縁<rt>えん</rt></ruby>の<ruby>証<rt>あかし</rt></ruby>にしよう」。手のひらに残った小さな羽根は、蔵王を再び訪れるための道しるべになった。",
+    body:"二枚の羽根を返し、一枚だけを手元に<ruby>残<rt>のこ</rt></ruby>すことにした。<ruby>白嶺坊<rt>はくれいぼう</rt></ruby>は少し<ruby>驚<rt>おど</rt></ruby>いた顔をしたあと、優しく<ruby>微笑<rt>ほほえ</rt></ruby>んだ。「その羽根は、きみと<ruby>疾風丸<rt>はやてまる</rt></ruby>を結ぶ<ruby>縁<rt>えん</rt></ruby>の<ruby>証<rt>あかし</rt></ruby>にしよう」。手のひらに残った小さな羽根は、蔵王を再び訪れるための道しるべになった。",
   },
 };
 
@@ -544,7 +544,7 @@ function resumeFromState(){
     return;
   }
   if(state.phase === "endingSelect"){
-    playCinematic("🪶🪶🪶", "羽団扇が完成した", "師匠のもとへ向かおう", () => {
+    playCinematic("🪶🪶🪶🪶🪶", "羽団扇が完成した", "師匠のもとへ向かおう", () => {
       showMasterScene();
     });
   } else if(state.phase === "endingResult" && state.endingKey){
@@ -719,7 +719,7 @@ function showFeatherStory(spot){
 
       $("#storyNextBtn").onclick = () => {
         if(complete){
-          playCinematic("🪶🪶🪶", "羽団扇が完成した", "The Wind Returns", "師匠のもとへ向かおう", () => {
+          playCinematic("🪶🪶🪶🪶🪶", "羽団扇が完成した", "The Wind Returns", "師匠のもとへ向かおう", () => {
             showMasterScene();
           });
         } else {
@@ -743,7 +743,7 @@ function showMasterScene(){
 
     ()=>{
       $("#storyNextBtn").style.display="inline-flex";
-      $("#storyNextBtn").textContent="羽団扇をどうする？";
+      $("#storyNextBtn").innerHTML="<ruby>羽団扇<rt>はうちわ</rt></ruby>をどうする？";
       $("#storyNextBtn").onclick=()=>{
         goToEndingSelect();
       };
@@ -756,14 +756,14 @@ function goToEndingSelect(){
   state.phase = "endingSelect";
   saveState();
   showView("endingSelect");
-  $("#masterText").textContent = "";
+  $("#masterText").innerHTML = "";
   typewriterText($("#masterText"),
-    "……よくぞ、三枚の羽根を集めてくれた。さて、この羽団扇をどうするか、きみに委ねよう。",
+    "……よくぞ、三枚の羽根を集めてくれた。さて、この<ruby>羽団扇<rt>はうちわ</rt></ruby>をどうするか、きみに委ねよう。",
     () => {
       const box = $("#endingChoices");
       box.innerHTML = "";
       const opts = [
-        { key:"all_return", title:"羽根をすべて返す", desc:"疾風丸に羽根をすべて返し、羽団扇を元通りにする。" },
+        { key:"all_return", title:"羽根をすべて返す", desc:"疾風丸に羽根をすべて返し、<ruby>羽団扇<rt>はうちわ</rt></ruby>を元通りにする。" },
         { key:"keep_one", title:"一枚だけ残す", desc:"一枚の羽根を記念に残し、二枚を返す。" },
       ];
       opts.forEach(opt => {
@@ -795,7 +795,7 @@ function renderEndingResult(key){
   const ending = ENDINGS[key];
   $("#endEmoji").textContent = ending.emoji;
   $("#endTitle").innerHTML = ending.title;
-  $("#endBody").textContent = ending.body;
+  $("#endBody").innerHTML = ending.body;
 
   const summary = $("#endSummary");
   summary.innerHTML = "";
@@ -825,7 +825,7 @@ $("#playAgainBtn").addEventListener("click", () => {
 const NOTEBOOK_PAGES = [
   {
     key:"map", label:"会場マップ",
-    render:() => `<div class="card"><div class="eyebrow">会場マップ</div><p class="lead">受付で受け取ったパンフレットを参考に、選んだ道に隠された3つのQRコードを、好きな順番で探し出そう。「探索」タブでは、どの謎をすでに解いたかを確認できます。</p></div>`,
+    render:() => `<div class="card"><div class="eyebrow">会場マップ</div><p class="lead">受付で受け取ったパンフレットを参考に、選んだ道に隠された5つのQRコードを、好きな順番で探し出そう。「探索」タブでは、どの謎をすでに解いたかを確認できます。</p></div>`,
   },
   {
     key:"record", label:"羽根の記録",
