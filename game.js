@@ -20,34 +20,34 @@ const ROUTES = {
     label: "勇気の道",
     badgeClass: "yuuki",
     color: "#b2492f",
-    theme: "ジャンプ台・山岳信仰",
+    theme: "ジャンプ台・湖",
     spots: [
       {
-        id:"y1", name:"ジャンプ台 展望台", x:150, y:80,
-        title:"謎その一：山を仰ぐ者たち",
-        desc:"ジャンプ台の麓に、古い立て札が立っている。そこにはこう刻まれていた。",
-        visual:"「天へ近づく者は、まず　三　つ　数える」\n展望台の柱は、いくつ並んでいるだろう？",
-        hint:"冒険の書「ジャンプ台」のページに、柱の写真と本数のヒントが載っているよ。柱は横に一列、等間隔で並んでいる。",
-        answer:["5","五","五本","5本"],
-        story:"柱を数え終えると、疾風丸がぱっと表情を明るくした。「これで羽根が一枚、見つかった気がする！」",
+        id:"k1", name:"蔵王ジャンプ台", x:100, y:90,
+        title:"謎その一：風の言葉",
+        desc:"風が<ruby>頬<rt>ほお</rt></ruby>をなでる。目の前には、空へと続く大きなジャンプ台がそびえ立っている。",
+        visual:"空へ飛び立つ場所を<ruby>示<rt>しめ</rt></ruby>すドイツ語を見つけよう。",
+        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のジャンプ台の<ruby>説明<rt>せつめい</rt></ruby>のところにスキーに関するドイツ語が書かれているよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
+        answer:["シャンツェ","しゃんつぇ"],
+        story:"その言葉を口にした<ruby>瞬間<rt>しゅんかん</rt></ruby>、風が<ruby>優<rt>やさ</rt></ruby>しく吹き抜ける。ジャンプ台の方から、一枚の羽根がひらりと<ruby>舞<rt>ま</rt></ruby>い落ちてきた。",
       },
       {
-        id:"y2", name:"山頂の鳥居", x:90, y:190,
-        title:"謎その二：祈りの言葉",
-        desc:"鳥居の前で、疾風丸が空を見上げてつぶやく。",
-        visual:"蔵王で古くから信仰されてきた山の神様は、何と呼ばれてきた？\n（冒険の書「山岳信仰」のページにヒントあり）",
-        hint:"冒険の書には「蔵王権現」という言葉が紹介されているはず。ひらがな・カタカナ・漢字、どれで答えてもOK。",
-        answer:["蔵王権現","ざおうごんげん","ザオウゴンゲン"],
-        story:"正しい名を口にすると、鳥居の柱の隙間から小さな羽根がそっと現れた。",
+        id:"k2", name:"色の変わる湖", x:220, y:180,
+        title:"謎その二：色が変わる水",
+        desc:"<ruby>湖<rt>みずうみ</rt></ruby>の<ruby>水面<rt>すいめん</rt></ruby>が太陽の光を受けて、宝石のように<ruby>輝<rt>かがや</rt></ruby>いている。",
+        visual:"青色やエメラルドグリーンに変わるのはドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のどっち？",
+        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のページに<ruby>説明<rt>せつめい</rt></ruby>が<ruby>紹介<rt>しょうかい</rt></ruby>されているよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
+        answer:["ドッコぬま","どっこ沼","ドッコ沼","どっこぬま"],
+        story:"<ruby>湖<rt>みずうみ</rt></ruby>の名を<ruby>告<rt>つ</rt></ruby>げると、<ruby>水面<rt>すいめん</rt></ruby>がきらりと<ruby>輝<rt>かがや</rt></ruby>く。風に乗って、小さな羽根が手のひらへと<ruby>舞<rt>ま</rt></ruby>い<ruby>降<rt>お</rt></ruby>りてきた。",
       },
       {
-        id:"y3", name:"御釜 展望ポイント", x:210, y:290,
-        title:"謎その三：エメラルドの謎",
-        desc:"御釜のほとりで、水面が陽に照らされて輝いている。",
-        visual:"御釜の水面が見せる、あの美しい色は何色と呼ばれている？\n（ヒント：宝石の名前）",
-        hint:"冒険の書「御釜」のページに色の名前が書かれているよ。緑色の宝石の名前を思い出してみて。",
-        answer:["エメラルド","エメラルドグリーン","翠緑"],
-        story:"色の名を告げると、湖畔の風がふわりと舞い上がり、最後の羽根が手のひらに舞い降りた。",
+        id:"k3", name:"スキーヤーの最高到達点", x:130, y:300,
+        title:"謎その三：プロ選手の飛行",
+        desc:"空高く飛び立つスキーヤーの姿が目に浮かぶ。ここには、世界に<ruby>誇<rt>ほこ</rt></ruby>る<ruby>大記録<rt>だいきろく</rt></ruby>が<ruby>刻<rt>きざ</rt></ruby>まれている。",
+        visual:"<ruby>蔵王<rt>ざおう</rt></ruby>ジャンプ台で<ruby>髙梨沙羅選手<rt>たかなしさらせんしゅ</rt></ruby>が<ruby>記録<rt>きろく</rt></ruby>した<ruby>最高<rt>さいこう</rt></ruby>の<ruby>飛距離<rt>ひきょり</rt></ruby>は何m？",
+        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のジャンプ台のところを見てみよう。<ruby>詳<rt>くわ</rt></ruby>しい<ruby>数値<rt>すうち</rt></ruby>が書いてあるよ。ジャンプ台の<ruby>看板<rt>かんばん</rt></ruby>にもヒントがあるかも...",
+        answer:["106.0","106","１０６","１０６.０"],
+        story:"まるでスキーヤーが空を<ruby>舞<rt>ま</rt></ruby>うように、<ruby>最後<rt>さいご</rt></ruby>の一枚の羽根が風に乗ってあなたのもとへ飛んできた。",
       },
     ],
   },
@@ -55,34 +55,34 @@ const ROUTES = {
     label: "湯けむりの道",
     badgeClass: "yukemuri",
     color: "#5ea3b5",
-    theme: "蔵王温泉・樹氷・コマクサ",
+    theme: "蔵王温泉・樹氷・高湯通り",
     spots: [
       {
-        id:"k1", name:"蔵王温泉 共同浴場", x:100, y:90,
-        title:"謎その一：湯けむりの記憶",
-        desc:"共同浴場の入口で、湯気があたたかく立ちのぼる。",
-        visual:"蔵王温泉が発見されたと伝えられているのは、およそ何年前？\n（冒険の書「蔵王温泉」のページに西暦と年数のヒントあり）",
-        hint:"冒険の書には開湯の伝承年数が書かれているよ。「約」がつく大きな数字を探してみて。百の位に注目。",
-        answer:["1900","1900年","約1900年"],
-        story:"数字を答えると、下駄箱の裏から羽根が一枚、ひらりと舞い落ちてきた。",
+       id:"y1", name:"蔵王樹氷", x:150, y:80,
+       title:"謎その一：雪の怪物",
+       desc:"雪と風が作り出した白い<ruby>木々<rt>きぎ</rt></ruby>が、静かにあなたを見つめている。",
+       visual:"<ruby>樹氷<rt>じゅひょう</rt></ruby>ができる条件を3つ探そう。",
+       hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書の<ruby>樹氷<rt>じゅひょう</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>のところに書いてあるよ。<ruby>文章<rt>ぶんしょう</rt></ruby>の中で目立ってる文字に<ruby>注目<rt>ちゅうもく</rt></ruby>してみよう。",
+       answer:["ゆき","雪"],
+       story:"白く<ruby>凍<rt>こお</rt></ruby>った枝の<ruby>隙間<rt>すきま</rt></ruby>から、<ruby>淡<rt>あわ</rt></ruby>く光る羽根が姿を<ruby>現<rt>あら</rt></ruby>した。",
       },
       {
-        id:"k2", name:"樹氷原の入口", x:220, y:180,
-        title:"謎その二：氷の怪物",
-        desc:"樹氷原の入口で、白く凍りついた木々が並んでいる。",
-        visual:"この不思議な氷の姿をした木々は、通称「〇〇モンスター」と呼ばれている。〇〇に入る言葉は？",
-        hint:"冒険の書「樹氷」のページに愛称が紹介されているよ。カタカナ3文字。",
-        answer:["スノー","すのー","SNOW","snow"],
-        story:"答えを口にした瞬間、氷の枝の間からきらりと光るものが。羽根が凍りついた木の根元にあった。",
+       id:"y2", name:"共同浴場", x:90, y:190,
+       title:"謎その二：魔法の湯",
+       desc:"湯けむりが立ち上り、あたたかな空気が<ruby>辺<rt>あた</rt></ruby>りを<ruby>包<rt>つつ</rt></ruby>み込む。",
+       visual:"<ruby>共同浴場<rt>きょうどうよくじょう</rt></ruby>は何の湯と呼ばれているか。",
+       hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書の<ruby>共同浴場<rt>きょうどうよくじょう</rt></ruby>についての説明のところに書いてあるよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
+       answer:["美肌の湯","美肌","びはだ","びはだの湯","美肌のゆ"],
+       story:"その名を<ruby>告<rt>つ</rt></ruby>げると、湯けむりの中から小さな羽根がそっと<ruby>現<rt>あら</rt></ruby>れた。",
       },
       {
-        id:"k3", name:"コマクサの群生地", x:130, y:300,
-        title:"謎その三：高嶺の花",
-        desc:"砂礫の斜面に、小さなピンク色の花が風に揺れている。",
-        visual:"厳しい環境でしか育たないこの高山植物は、しばしば「高嶺の〇」と呼ばれ親しまれている。〇に入る漢字一文字は？",
-        hint:"冒険の書「コマクサ」のページを見てみよう。美しいものの代名詞になっている漢字一文字だよ。",
-        answer:["花","はな"],
-        story:"花の名を告げると、群生地の風がやみ、最後の羽根が静かに舞い降りた。",
+       id:"y3", name:"300年の道", x:210, y:290,
+       title:"謎その三：300年の道",
+       desc:"<ruby>硫黄<rt>いおう</rt></ruby>の<ruby>香<rt>かお</rt></ruby>りが<ruby>漂<rt>ただ</rt></ruby>う<ruby>石畳<rt>いしだん</rt></ruby>の道。その道は、三百年もの時を<ruby>旅人<rt>たびびと</rt></ruby>とともに<ruby>歩<rt>あゆ</rt></ruby>んできた。",
+       visual:"300年続く通りの名前は？",
+       hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみて。300年の道〜って説明に書いてあるところに<ruby>注目<rt>ちゅうもく</rt></ruby>してみて。",
+       answer:["高湯どおり","たかゆ通り","高湯通り"],
+       story:"<ruby>温泉<rt>おんせん</rt></ruby>の<ruby>香<rt>かお</rt></ruby>りとともに、一枚の羽根がふわりと風に<ruby>舞<rt>ま</rt></ruby>い降りてきた。",
       },
     ],
   },
@@ -91,13 +91,18 @@ const ROUTES = {
 // ストーリー：導入 → ルート選択 → (自由順序で3つのQR/謎) → 最終選択 → エンディング
 const STORY = {
   intro: [
-    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"あっ…！ようこそ、蔵王ジャンプ台フェスティバルへ。ぼくは<ruby>修行中<rt>しゅぎょうちゅう</rt></ruby>の<ruby>小天狗<rt>こてんぐ</rt></ruby>、<ruby>疾風丸<rt>はやてまる</rt></ruby>だ。実は困ったことになっていて…" },
-    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"<ruby>師匠<rt>ししょう</rt></ruby>からお借りした大切な「羽団扇（はうちわ）」の羽根が、強い風で吹き飛ばされてしまったんだ。会場のあちこちに散らばってしまった…！" },
-    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"きみの力を貸してほしい。この「<ruby>冒険<rt>ぼうけん</rt></ruby>の書」を渡すから、会場に散らばったQRコードを見つけて、謎を解きながら羽根を探してくれないか？ <ruby>順番<rt>じゅんばん</rt></ruby>はどこからでも<ruby>構<rt>かま</rt></ruby>わないよ。" },
+    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"あっ…！ようこそ、蔵王ジャンプ台フェスティバルへ。ぼくは<ruby>修行中<rt>しゅぎょうちゅう</rt></ruby>の<ruby>小天狗<rt>こてんぐ</rt></ruby>、<ruby>疾風丸<rt>はやてまる</rt></ruby>だ！" },
+    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"実は少し困ったことになっていて......。" },
+    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"実は<ruby>師匠<rt>ししょう</rt></ruby>の<ruby>白嶺坊<rt>はくれいぼう</rt></ruby>から大切な<ruby>羽団扇<rt>はうちわ</rt></ruby>を<ruby>預<rt>あず</rt></ruby>かっていたんだけど......。" },
+    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"さっき<ruby>突然吹<rt>とつぜんふ</rt></ruby>いた強い風で、三枚の羽根が会場のあちこちへ飛ばされてしまったんだ！" },
+    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"羽根はただ飛ばされたわけじゃないみたいなんだ。" },
+    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"<ruby>蔵王<rt>ざおう</rt></ruby>の風は昔から人々の<ruby>祈<rt>いの</rt></ruby>りや自然の<ruby>記憶<rt>きおく</rt></ruby>を運ぶと言われている。羽根もそれぞれ<ruby>蔵王<rt>ざおう</rt></ruby>の物語を<ruby>宿<rt>やど</rt></ruby>した場所へ飛んでいったみたいなんだ。" },
+    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"だから、その場所に<ruby>隠<rt>かく</rt></ruby>された謎を解くことができれば、羽根を見つけられるはず！" },
+    { char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>", text:"ありがとう！きっと君なら見つけられるよ！" },
   ],
   routeChoice: {
     char:"🐦", name:"<ruby>疾風丸<rt>はやてまる</rt></ruby>",
-    text:"羽根は風に乗って、二つの方向へ飛んでいったようだ。どちらの道から探しに行く？",
+    text:"羽根は風に乗って、二つの方向へ飛んでいったようだ。どちらの道を探しに行く？",
   },
 };
 
@@ -105,12 +110,12 @@ const ENDINGS = {
   all_return: {
     emoji:"🕊",
     title:"すべてを、あるべき場所へ",
-    body:"三枚の羽根をすべて疾風丸に返すと、白嶺坊は静かにうなずいた。「よくぞ、風に惑わされず届けてくれた」。羽団扇は再び師匠の手に渡り、蔵王の風は穏やかに凪いだという。疾風丸は深々と頭を下げ、いつか一人前の天狗になったら、また会いに来ると約束してくれた。",
+    body:"三枚の羽根をすべて<ruby>疾風丸<rt>はやてまる</rt></ruby>に返すと、<ruby>白嶺坊<rt>はくれいぼう</rt></ruby>は静かにうなずいた。「よくぞ、風に惑わされず届けてくれた」。<ruby>羽団扇<rt>はうちわ</rt></ruby>は再び師匠の手に渡り、蔵王の風は穏やかに凪いだという。疾風丸は深々と頭を下げ、いつか一人前の天狗になったら、また会いに来ると約束してくれた。",
   },
   keep_one: {
     emoji:"🪶",
     title:"一枚の羽根と、約束",
-    body:"二枚の羽根を返し、一枚だけを手元に残すことにした。白嶺坊は少し驚いた顔をしたあと、優しく微笑んだ。「その羽根は、きみと疾風丸を結ぶ縁の証にしよう」。手のひらに残った小さな羽根は、蔵王を再び訪れるための道しるべになった。",
+    body:"二枚の羽根を返し、一枚だけを手元に残すことにした。<ruby>白嶺坊<rt>はくれいぼう</rt></ruby>は少し驚いた顔をしたあと、優しく微笑んだ。「その羽根は、きみと<ruby>疾風丸<rt>はやてまる</rt></ruby>を結ぶ<ruby>縁<rt>えん</rt></ruby>の<ruby>証<rt>あかし</rt></ruby>にしよう」。手のひらに残った小さな羽根は、蔵王を再び訪れるための道しるべになった。",
   },
 };
 
@@ -270,8 +275,25 @@ function typewriterText(el,text,onDone){
       if(onDone) onDone();
     }
 
-  },35);
+  },30);
 
+}
+
+function showStoryChoices(choices){
+  const box = $("#storyChoices");
+  box.innerHTML = "";
+  choices.forEach(choice =>{
+    const btn = document.createElement("button");
+    btn.className = "choice-card";
+    btn.textContent = choice.text;
+    btn.addEventListener("click",()=>{
+      box.innerHTML = "";
+      if(choice.next){
+        choice.next();
+      }
+    });
+    box.appendChild(btn);
+  });
 }
 
 function showFeatherEffect(next){
@@ -330,6 +352,48 @@ function showIntroStep(){
   $("#storyChoices").innerHTML = "";
   $("#storyNextBtn").style.display = "none";
   typewriterText($("#storyText"), step.text, () => {
+     if(state.storyStep === 1){
+      showStoryChoices([
+        {
+          text:"どうしたの？",
+          next:()=>{
+            state.storyStep++;
+            saveState();
+            showIntroStep();
+          }
+        },
+        {
+          text:"手伝えることはある？",
+          next:()=>{
+            state.storyStep++;
+            saveState();
+            showIntroStep();
+          }
+        }
+      ]);
+      return;
+    }
+    if(state.storyStep === 6){
+      showStoryChoices([
+        {
+          text:"謎を一緒に解けばいいんだね！",
+          next:()=>{
+            state.storyStep++;
+            saveState();
+            showIntroStep();
+          }
+        },
+        {
+          text:"一緒に探そう！",
+          next:()=>{
+            state.storyStep++;
+            saveState();
+            showIntroStep();
+          }
+        }
+      ]);
+      return;
+    }
     $("#storyNextBtn").style.display = "inline-flex";
 
     if(state.storyStep < STORY.intro.length - 1){
@@ -496,10 +560,10 @@ function goToPuzzle(spot){
   const route = currentRoute();
   $("#puzzleRouteLabel").textContent = `${route.label} · ${spot.name}`;
   $("#puzzleTitle").textContent = spot.title;
-  $("#puzzleDesc").textContent = spot.desc;
-  $("#puzzleVisual").textContent = spot.visual;
+  $("#puzzleDesc").innerHTML = spot.desc;
+  $("#puzzleVisual").innerHTML = spot.visual;
   $("#hintBox").classList.remove("show");
-  $("#hintBox").textContent = spot.hint;
+  $("#hintBox").innerHTML = spot.hint;
   $("#hintToggle").textContent = "ヒントを見る（冒険の書より）";
   $("#answerInput").value = "";
   $("#answerFeedback").textContent = "";
