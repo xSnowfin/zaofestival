@@ -46,8 +46,26 @@ const ROUTES = {
         desc:"空高く飛び立つスキーヤーの姿が目に浮かぶ。ここには、世界に<ruby>誇<rt>ほこ</rt></ruby>る<ruby>大記録<rt>だいきろく</rt></ruby>が<ruby>刻<rt>きざ</rt></ruby>まれている。",
         visual:"<ruby>蔵王<rt>ざおう</rt></ruby>ジャンプ台で<ruby>髙梨沙羅選手<rt>たかなしさらせんしゅ</rt></ruby>が<ruby>記録<rt>きろく</rt></ruby>した<ruby>最高<rt>さいこう</rt></ruby>の<ruby>飛距離<rt>ひきょり</rt></ruby>は何m？",
         hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のジャンプ台のところを見てみよう。<ruby>詳<rt>くわ</rt></ruby>しい<ruby>数値<rt>すうち</rt></ruby>が書いてあるよ。ジャンプ台の<ruby>看板<rt>かんばん</rt></ruby>にもヒントがあるかも...",
-        answer:["106.0","106","１０６","１０６.０"],
+        answer:["106.0","106","１０６","１０６.０", "106メートル"],
         story:"まるでスキーヤーが空を<ruby>舞<rt>ま</rt></ruby>うように、<ruby>最後<rt>さいご</rt></ruby>の一枚の羽根が風に乗ってあなたのもとへ飛んできた。",
+      },
+      {
+       id: "k4", name: "ジャンプ台の謎", x: 400, y: 200,
+       title: "謎その四：ジャンプ台の謎",
+       desc: "ジャンプ<ruby>台<rt>だい</rt></ruby>の<ruby>標高差<rt>ひょうこうさ</rt></ruby>106mで<ruby>霞城<rt>かじょう</rt></ruby>セントラルとほぼ<ruby>同<rt>おな</rt></ruby>じ。",
+       visual: "ジャンプ<ruby>台<rt>だい</rt></ruby>の<ruby>標高差<rt>ひょうこうさ</rt></ruby>は<ruby>霞城<rt>かじょう</rt></ruby>セントラルとほぼ<ruby>同<rt>おな</rt></ruby>じ<ruby>何<rt>なん</rt></ruby>m？",
+       hint: "<ruby>冒険<rt>ぼうけん</rt></ruby>の<ruby>書<rt>しょ</rt></ruby>のジャンプ<ruby>台<rt>だい</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>をよく<ruby>読<rt>よ</rt></ruby>んでみてね。<ruby>標高差<rt>ひょうこうさ</rt></ruby>の<ruby>数字<rt>すうじ</rt></ruby>を探してみよう。",
+       answer: ["106", "106m", "１０６", "１０６ｍ", "106メートル"],
+       story: "<ruby>眼下<rt>がんか</rt></ruby>に<ruby>広<rt>ひろ</rt></ruby>がる<ruby>壮大<rt>そうだい</rt></ruby>な<ruby>景色<rt>けしき</rt></ruby>とともに、<ruby>風<rt>かぜ</rt></ruby>を切るような<ruby>新<rt>あたら</rt></ruby>しい手がかりを<ruby>手<rt>て</rt></ruby>に入れた。"
+      },
+      {
+        id:"k5", name:"色の変わる湖", x:220, y:180,
+        title:"謎その二：色が変わる水",
+        desc:"<ruby>湖<rt>みずうみ</rt></ruby>の<ruby>水面<rt>すいめん</rt></ruby>が太陽の光を受けて、宝石のように<ruby>輝<rt>かがや</rt></ruby>いている。",
+        visual:"<ruby>季節<rt>きせつ</rt></ruby>や<ruby>天候<rt>てんこう</rt></ruby>で色が変わるのはドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のどっち？",
+        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のページに<ruby>説明<rt>せつめい</rt></ruby>が<ruby>紹介<rt>しょうかい</rt></ruby>されているよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
+        answer:["ざおうおかま","蔵王御釜","蔵王おかま","ざおう御釜"],
+        story:"<ruby>湖<rt>みずうみ</rt></ruby>の名を<ruby>告<rt>つ</rt></ruby>げると、<ruby>水面<rt>すいめん</rt></ruby>がきらりと<ruby>輝<rt>かがや</rt></ruby>く。風に乗って、小さな羽根が手のひらへと<ruby>舞<rt>ま</rt></ruby>い<ruby>降<rt>お</rt></ruby>りてきた。",
       },
     ],
   },
@@ -83,6 +101,24 @@ const ROUTES = {
        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみて。300年の道〜って説明に書いてあるところに<ruby>注目<rt>ちゅうもく</rt></ruby>してみて。",
        answer:["高湯どおり","たかゆ通り","高湯通り"],
        story:"<ruby>温泉<rt>おんせん</rt></ruby>の<ruby>香<rt>かお</rt></ruby>りとともに、一枚の羽根がふわりと風に<ruby>舞<rt>ま</rt></ruby>い降りてきた。",
+      },
+      {
+       id: "y4", name: "樹氷の謎", x: 450, y: 180,
+       title: "謎その九：樹氷の謎",
+       desc: "樹氷原の入口で、白く凍りついた木々が並んでいる。",
+       visual: "<ruby>樹氷<rt>じゅひょう</rt></ruby>が行っているとある<ruby>調整<rt>ちょうせい</rt></ruby>は何？",
+       hint: "<ruby>冒険<rt>ぼうけん</rt></ruby>の書の<ruby>樹氷<rt>じゅひょう</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>をよく読んでみてね。",
+       answer: ["積雪量", "せきせつりょう", "積雪量の調整", "せきせつりょうのちょうせい"],
+       story: "<ruby>白銀<rt>はくぎん</rt></ruby>の世界に包まれた<ruby>樹氷<rt>じゅひょう</rt></ruby>のあいだで、ふわりと羽が降りてきた。"
+      },
+      {
+        id:"y5", name:"色の変わる湖", x:220, y:180,
+        title:"謎その二：色が変わる水",
+        desc:"<ruby>湖<rt>みずうみ</rt></ruby>の<ruby>水面<rt>すいめん</rt></ruby>が太陽の光を受けて、宝石のように<ruby>輝<rt>かがや</rt></ruby>いている。",
+        visual:"<ruby>季節<rt>きせつ</rt></ruby>や<ruby>天候<rt>てんこう</rt></ruby>で色が変わるのはドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のどっち？",
+        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のページに<ruby>説明<rt>せつめい</rt></ruby>が<ruby>紹介<rt>しょうかい</rt></ruby>されているよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
+        answer:["ざおうおかま","蔵王御釜","蔵王おかま","ざおう御釜"],
+        story:"<ruby>湖<rt>みずうみ</rt></ruby>の名を<ruby>告<rt>つ</rt></ruby>げると、<ruby>水面<rt>すいめん</rt></ruby>がきらりと<ruby>輝<rt>かがや</rt></ruby>く。風に乗って、小さな羽根が手のひらへと<ruby>舞<rt>ま</rt></ruby>い<ruby>降<rt>お</rt></ruby>りてきた。",
       },
     ],
   },
@@ -157,6 +193,24 @@ function findSpot(spotId){
   return route.spots.find(s => s.id === spotId) || null;
 }
 
+/* ルートをまたいでspotIdからspotを探す（QRリンク直接アクセス用） */
+function findSpotAnywhere(spotId){
+  for(const key in ROUTES){
+    const spot = ROUTES[key].spots.find(s => s.id === spotId);
+    if(spot) return { routeKey:key, spot };
+  }
+  return null;
+}
+
+/* そのspot専用のURL（QRコード生成用）を作る */
+function getSpotUrl(spotId){
+  const url = new URL(window.location.href);
+  url.search = "";
+  url.hash = "";
+  url.searchParams.set("spot", spotId);
+  return url.toString();
+}
+
 /* ---------------- DOM参照 ---------------- */
 
 const $ = (sel) => document.querySelector(sel);
@@ -210,7 +264,7 @@ function initSnowfall(){
 /* ---------------- トップ画面 ---------------- */
 
 function renderTop(){
-  const total = 3;
+  const total = 5;
   const solved = state.solvedSpotIds.length;
   $("#statFeathers").textContent = `${solved}/${total}`;
   $("#statRoute").textContent = state.route ? ROUTES[state.route].label : "未選択";
@@ -523,52 +577,31 @@ function renderMap(){
   const solvedCount = state.solvedSpotIds.length;
   $("#mapProgressLabel").textContent = `謎を発見：${solvedCount}/${route.spots.length}（好きな順番で探索できます）`;
 
-  const svg = $("#mapSvg");
-  svg.innerHTML = "";
-
-  // 簡易背景装飾（山の稜線）
-  const ns = "http://www.w3.org/2000/svg";
-  const ridge = document.createElementNS(ns, "path");
-  ridge.setAttribute("d", "M0,340 L50,260 L110,310 L160,220 L210,290 L260,240 L300,300 L300,375 L0,375 Z");
-  ridge.setAttribute("fill", "rgba(244,247,245,0.05)");
-  svg.appendChild(ridge);
+  const list = $("#spotList");
+  list.innerHTML = "";
 
   route.spots.forEach((spot) => {
     const found = state.solvedSpotIds.includes(spot.id);
 
-    const g = document.createElementNS(ns, "g");
-    g.setAttribute("class", "map-pin" + (found ? " found" : ""));
-    g.setAttribute("transform", `translate(${spot.x},${spot.y})`);
+    const item = document.createElement("div");
+    item.className = "spot-item" + (found ? " found" : "");
 
-    const circle = document.createElementNS(ns, "circle");
-    circle.setAttribute("class", "pin-body");
-    circle.setAttribute("r", "16");
-    circle.setAttribute("fill", found ? "rgba(143,212,168,0.25)" : "rgba(224,169,81,0.18)");
-    circle.setAttribute("stroke", found ? "#8fd4a8" : route.color);
-    circle.setAttribute("stroke-width", "2");
-    g.appendChild(circle);
+    const mark = document.createElement("span");
+    mark.className = "spot-mark";
+    mark.textContent = found ? "✓" : "？";
+    item.appendChild(mark);
 
-    const mark = document.createElementNS(ns, "text");
-    mark.setAttribute("x","0"); mark.setAttribute("y","5");
-    mark.setAttribute("text-anchor","middle");
-    mark.setAttribute("font-size","16");
-    mark.setAttribute("fill", found ? "#8fd4a8" : "#f4f7f5");
-    mark.textContent = found ? "✓" : "×";
-    g.appendChild(mark);
+    const name = document.createElement("span");
+    name.className = "spot-name";
+    name.textContent = spot.name;
+    item.appendChild(name);
 
-    const label = document.createElementNS(ns, "text");
-    label.setAttribute("x","0"); label.setAttribute("y","30");
-    label.setAttribute("text-anchor","middle");
-    label.setAttribute("font-size","8.5");
-    label.setAttribute("fill","rgba(244,247,245,0.55)");
-    label.textContent = spot.name;
-    g.appendChild(label);
+    const status = document.createElement("span");
+    status.className = "spot-status";
+    status.textContent = found ? "解決済み" : "未発見";
+    item.appendChild(status);
 
-    if(!found){
-      g.addEventListener("click", () => openQrScan(spot));
-    }
-
-    svg.appendChild(g);
+    list.appendChild(item);
   });
 }
 
@@ -598,6 +631,11 @@ $("#qrScanConfirm").addEventListener("click", () => {
    QRコードを読み取った先で、その場所固有の謎が出題される。   */
 
 function goToPuzzle(spot){
+  if(state.solvedSpotIds.includes(spot.id)){
+    alert(`「${spot.name}」の謎はすでに解決済みだよ。まだ見つけていない場所を探してみよう！`);
+    goToMap();
+    return;
+  }
   state.activeSpotId = spot.id;
   state.phase = "puzzle";
   saveState();
@@ -756,7 +794,7 @@ function goToEndingSelect(){
 function renderEndingResult(key){
   const ending = ENDINGS[key];
   $("#endEmoji").textContent = ending.emoji;
-  $("#endTitle").textContent = ending.title;
+  $("#endTitle").innerHTML = ending.title;
   $("#endBody").textContent = ending.body;
 
   const summary = $("#endSummary");
@@ -787,7 +825,7 @@ $("#playAgainBtn").addEventListener("click", () => {
 const NOTEBOOK_PAGES = [
   {
     key:"map", label:"会場マップ",
-    render:() => `<div class="card"><div class="eyebrow">会場マップ</div><p class="lead">受付で受け取ったパンフレットから、選んだ道のマップと×印を確認できます。3つのQRコードは好きな順番で探せます。×印の位置を目安にQRコードを探してください。</p></div>`,
+    render:() => `<div class="card"><div class="eyebrow">会場マップ</div><p class="lead">受付で受け取ったパンフレットを参考に、選んだ道に隠された3つのQRコードを、好きな順番で探し出そう。「探索」タブでは、どの謎をすでに解いたかを確認できます。</p></div>`,
   },
   {
     key:"record", label:"羽根の記録",
@@ -860,6 +898,102 @@ $$(".tab-btn").forEach(btn => {
   });
 });
 
+/* ---------------- URLリンク直接アクセス（QRコード用） ----------------
+   各謎（spot）にQRコードを用意する予定。
+   QRコードには「このゲームのURL + ?spot=スポットID」を埋め込んでおけば、
+   読み取るだけでその謎が直接開く。以下はその処理と、
+   リンク一覧を確認するための簡易admin画面。                          */
+
+function showAdminLinks(){
+  const wrap = document.createElement("div");
+  wrap.id = "adminLinksOverlay";
+  wrap.style.cssText = "position:fixed;inset:0;background:#0d232d;color:#f4f7f5;z-index:99999;overflow:auto;padding:24px;font-family:sans-serif;";
+
+  let html = "<h1 style='margin-bottom:6px;font-size:20px;'>QRコード用リンク一覧</h1>";
+  html += "<p style='font-size:13px;opacity:0.7;margin-bottom:20px;'>各URLをQRコード生成サービスに貼り付けて、対応するスポットにQRコードを設置してください。</p>";
+
+  Object.entries(ROUTES).forEach(([key, route]) => {
+    html += `<h2 style="margin:20px 0 10px;color:#e0a951;font-size:16px;">${route.label}</h2>`;
+    route.spots.forEach(spot => {
+      const url = getSpotUrl(spot.id);
+      html += `
+        <div style="margin-bottom:12px;padding:12px 14px;border:1px solid rgba(244,247,245,0.16);border-radius:8px;">
+          <div style="font-weight:bold;font-size:14px;">${spot.name}（id: ${spot.id}）</div>
+          <div style="word-break:break-all;font-size:12.5px;margin-top:6px;">
+            <a href="${url}" style="color:#8fd4a8;">${url}</a>
+          </div>
+        </div>`;
+    });
+  });
+
+  html += "<button id='adminCloseBtn' style='margin-top:10px;padding:10px 16px;border-radius:8px;border:none;background:#e0a951;color:#0d232d;font-weight:bold;cursor:pointer;'>閉じる</button>";
+  wrap.innerHTML = html;
+  document.body.appendChild(wrap);
+  document.getElementById("adminCloseBtn").addEventListener("click", () => wrap.remove());
+}
+
+/* URLパラメータを見て、QRリンク経由のアクセスかどうか判定・処理する。
+   処理した場合は true を返す（通常のトップ画面表示をスキップするため）。 */
+function handleUrlParams(){
+  const params = new URLSearchParams(window.location.search);
+
+  if(params.get("admin") === "1"){
+    showAdminLinks();
+    return false; // admin画面はオーバーレイなので、裏側は通常通り表示してOK
+  }
+
+  const spotId = params.get("spot");
+  if(!spotId) return false;
+
+  const found = findSpotAnywhere(spotId);
+  if(!found){
+    alert("指定された謎が見つかりませんでした。QRコードをもう一度確認してください。");
+    return false;
+  }
+
+  const { routeKey, spot } = found;
+
+  // すでに別ルートを選択済みで、かつQRが別ルートのものだった場合は
+  // 進行させず、選んだルートのマップに戻す（誤って別ルートの問題を
+  // 解いてしまうのを防ぐ）。
+  if(state.route && state.route !== routeKey){
+    const currentRouteLabel = ROUTES[state.route] ? ROUTES[state.route].label : "選んだ道";
+    alert(`このQRコードは「${ROUTES[routeKey].label}」のものだよ。今は「${currentRouteLabel}」を探索中だから、この謎には進めないよ。`);
+    history.replaceState(null, "", window.location.pathname + window.location.hash);
+    if(state.phase === "intro"){
+      state.phase = "map";
+      saveState();
+    }
+    renderTop();
+    if(state.route){
+      renderMap();
+      showView("map");
+    } else {
+      showView("top");
+    }
+    return true;
+  }
+
+  // ルート未選択の場合は、このQRのルートを選択する。
+  if(state.route !== routeKey){
+    state.route = routeKey;
+    state.solvedSpotIds = [];
+  }
+  if(state.phase === "intro"){
+    state.phase = "map";
+  }
+  state.endingKey = null;
+  saveState();
+  renderTop();
+
+  goToPuzzle(spot);
+
+  // URLをきれいにしておく（リロードや戻るボタンでの誤動作を防ぐ）
+  history.replaceState(null, "", window.location.pathname + window.location.hash);
+
+  return true;
+}
+
 /* ---------------- 初期化 ---------------- */
 
 function init(){
@@ -870,7 +1004,11 @@ function init(){
     saved
   );
   renderTop();
-  showView("top");
+
+  const handledByUrl = handleUrlParams();
+  if(!handledByUrl){
+    showView("top");
+  }
 }
 
 init();
