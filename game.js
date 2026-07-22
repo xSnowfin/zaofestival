@@ -739,7 +739,10 @@ function showMasterScene(){
 
   typewriterText(
     $("#storyText"),
-    "見事だ。\n\n三枚の羽根は再び一つとなった。\n\n疾風丸、お前も良き旅人に出会えたようだ。",
+    `見事だ。<br><br>
+     三枚の<ruby>羽根<rt>はね</rt></ruby>は再び一つとなった。<br><br>
+     <ruby>疾風丸<rt>はやてまる</rt></ruby>、
+     お前も良き旅人に出会えたようだ。`,
 
     ()=>{
       $("#storyNextBtn").style.display="inline-flex";
