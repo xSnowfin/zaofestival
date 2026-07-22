@@ -99,7 +99,7 @@ const ROUTES = {
        desc:"<ruby>硫黄<rt>いおう</rt></ruby>の<ruby>香<rt>かお</rt></ruby>りが<ruby>漂<rt>ただ</rt></ruby>う<ruby>石畳<rt>いしだん</rt></ruby>の道。その道は、三百年もの時を<ruby>旅人<rt>たびびと</rt></ruby>とともに<ruby>歩<rt>あゆ</rt></ruby>んできた。",
        visual:"300年続く通りの名前は？",
        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみて。300年の道〜って説明に書いてあるところに<ruby>注目<rt>ちゅうもく</rt></ruby>してみて。",
-       answer:["高湯どおり","たかゆ通り","高湯通り"],
+       answer:["高湯どおり","たかゆ通り","高湯通り","たかゆどおり","たかゆ"],
        story:"<ruby>温泉<rt>おんせん</rt></ruby>の<ruby>香<rt>かお</rt></ruby>りとともに、一枚の羽根がふわりと風に<ruby>舞<rt>ま</rt></ruby>い降りてきた。",
       },
       {
