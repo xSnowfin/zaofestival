@@ -820,7 +820,7 @@ function renderEndingResult(key){
 
 $("#playAgainBtn").addEventListener("click", () => {
   /* ゲームクリア後のアンケート画面 */
-  window.open("https://example.com", "_blank");
+  window.open("https://docs.google.com/forms/d/e/1FAIpQLScEIeP9r2LDAQNzG5nxoUGIfGApFnYQOS9Q8OY6GQmB92rtGw/viewform?usp=publish-editor", "_blank");
 });
 
 /* ---------------- 冒険の書（ノートブック） ---------------- */
