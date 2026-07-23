@@ -27,7 +27,7 @@ const ROUTES = {
         title:"謎その一：風の言葉",
         desc:"風が<ruby>頬<rt>ほお</rt></ruby>をなでる。目の前には、空へと続く大きなジャンプ台がそびえ立っている。",
         visual:"空へ飛び立つ場所を<ruby>示<rt>しめ</rt></ruby>すドイツ語を見つけよう。",
-        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のジャンプ台の<ruby>説明<rt>せつめい</rt></ruby>のところにスキーに関するドイツ語が書かれているよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
+        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のジャンプ台の<ruby>説明<rt>せつめい</rt></ruby>のところにスキーに<ruby>関<rt>かん</rt></ruby>するドイツ語が書かれているよ。ジャンプ台の<ruby>別名<rt>べつめい</rt></ruby>でかかれているところを探そう。",
         answer:["シャンツェ","しゃんつぇ"],
         story:"その言葉を口にした<ruby>瞬間<rt>しゅんかん</rt></ruby>、風が<ruby>優<rt>やさ</rt></ruby>しく吹き抜ける。ジャンプ台の方から、一枚の羽根がひらりと<ruby>舞<rt>ま</rt></ruby>い落ちてきた。",
       },
@@ -52,7 +52,7 @@ const ROUTES = {
       {
        id: "k4", name: "ジャンプ台の謎", x: 400, y: 200,
        title: "謎その四：ジャンプ台の謎",
-       desc: "ジャンプ<ruby>台<rt>だい</rt></ruby>の<ruby>標高差<rt>ひょうこうさ</rt></ruby>106mで<ruby>霞城<rt>かじょう</rt></ruby>セントラルとほぼ<ruby>同<rt>おな</rt></ruby>じ。",
+       desc: "風が<ruby>頬<rt>ほお</rt></ruby>をなでる。目の前には、空へと続く大きなジャンプ台がそびえ立っている。",
        visual: "ジャンプ<ruby>台<rt>だい</rt></ruby>の<ruby>標高差<rt>ひょうこうさ</rt></ruby>は<ruby>霞城<rt>かじょう</rt></ruby>セントラルとほぼ<ruby>同<rt>おな</rt></ruby>じ<ruby>何<rt>なん</rt></ruby>m？",
        hint: "<ruby>冒険<rt>ぼうけん</rt></ruby>の<ruby>書<rt>しょ</rt></ruby>のジャンプ<ruby>台<rt>だい</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>をよく<ruby>読<rt>よ</rt></ruby>んでみてね。<ruby>標高差<rt>ひょうこうさ</rt></ruby>の<ruby>数字<rt>すうじ</rt></ruby>を探してみよう。",
        answer: ["106", "106m", "１０６", "１０６ｍ", "106メートル"],
@@ -60,11 +60,11 @@ const ROUTES = {
       },
       {
         id:"k5", name:"色の変わる湖", x:220, y:180,
-        title:"謎その二：色が変わる水",
+        title:"謎その五：色が変わる水",
         desc:"<ruby>湖<rt>みずうみ</rt></ruby>の<ruby>水面<rt>すいめん</rt></ruby>が太陽の光を受けて、宝石のように<ruby>輝<rt>かがや</rt></ruby>いている。",
         visual:"<ruby>季節<rt>きせつ</rt></ruby>や<ruby>天候<rt>てんこう</rt></ruby>で色が変わるのはドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のどっち？",
         hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のページに<ruby>説明<rt>せつめい</rt></ruby>が<ruby>紹介<rt>しょうかい</rt></ruby>されているよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
-        answer:["ざおうおかま","蔵王御釜","蔵王おかま","ざおう御釜"],
+        answer:["ざおうおかま","蔵王御釜","蔵王おかま","ざおう御釜","おかま","御釜"],
         story:"<ruby>湖<rt>みずうみ</rt></ruby>の名を<ruby>告<rt>つ</rt></ruby>げると、<ruby>水面<rt>すいめん</rt></ruby>がきらりと<ruby>輝<rt>かがや</rt></ruby>く。風に乗って、小さな羽根が手のひらへと<ruby>舞<rt>ま</rt></ruby>い<ruby>降<rt>お</rt></ruby>りてきた。",
       },
     ],
@@ -79,9 +79,9 @@ const ROUTES = {
        id:"y1", name:"蔵王樹氷", x:150, y:80,
        title:"謎その一：雪の怪物",
        desc:"雪と風が作り出した白い<ruby>木々<rt>きぎ</rt></ruby>が、静かにあなたを見つめている。",
-       visual:"<ruby>樹氷<rt>じゅひょう</rt></ruby>ができる条件を3つ探そう。",
-       hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書の<ruby>樹氷<rt>じゅひょう</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>のところに書いてあるよ。<ruby>文章<rt>ぶんしょう</rt></ruby>の中で目立ってる文字に<ruby>注目<rt>ちゅうもく</rt></ruby>してみよう。",
-       answer:["ゆき","雪"],
+       visual:"<ruby>樹氷<rt>じゅひょう</rt></ruby>ができる<ruby>条件<rt>じょうけん</rt></ruby>を探して、3つのうち1つ答えよう。",
+       hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書の<ruby>樹氷<rt>じゅひょう</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>のところをよんでみよう。",
+       answer:["あおもりとどまつのき","アオモリトドマツの木","アオモリトドマツのき","あおもりとどまつの木","つめたいきょうふう","冷たい強風","冷たいきょうふう","つめたい強風","てきどなゆき","適度な雪","てきどな雪","適度なゆき"],
        story:"白く<ruby>凍<rt>こお</rt></ruby>った枝の<ruby>隙間<rt>すきま</rt></ruby>から、<ruby>淡<rt>あわ</rt></ruby>く光る羽根が姿を<ruby>現<rt>あら</rt></ruby>した。",
       },
       {
@@ -89,7 +89,7 @@ const ROUTES = {
        title:"謎その二：魔法の湯",
        desc:"湯けむりが立ち上り、あたたかな空気が<ruby>辺<rt>あた</rt></ruby>りを<ruby>包<rt>つつ</rt></ruby>み込む。",
        visual:"<ruby>共同浴場<rt>きょうどうよくじょう</rt></ruby>は何の湯と呼ばれているか。",
-       hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書の<ruby>共同浴場<rt>きょうどうよくじょう</rt></ruby>についての説明のところに書いてあるよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
+       hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書の<ruby>蔵王温泉<rt>ざおうおんせん</rt></ruby>についての説明のところに書いてあるよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
        answer:["美肌の湯","美肌","びはだ","びはだの湯","美肌のゆ","びはだのゆ"],
        story:"その名を<ruby>告<rt>つ</rt></ruby>げると、湯けむりの中から小さな羽根がそっと<ruby>現<rt>あら</rt></ruby>れた。",
       },
@@ -98,26 +98,26 @@ const ROUTES = {
        title:"謎その三：300年の道",
        desc:"<ruby>硫黄<rt>いおう</rt></ruby>の<ruby>香<rt>かお</rt></ruby>りが<ruby>漂<rt>ただ</rt></ruby>う<ruby>石畳<rt>いしだん</rt></ruby>の道。その道は、三百年もの時を<ruby>旅人<rt>たびびと</rt></ruby>とともに<ruby>歩<rt>あゆ</rt></ruby>んできた。",
        visual:"300年続く通りの名前は？",
-       hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみて。300年の道〜って説明に書いてあるところに<ruby>注目<rt>ちゅうもく</rt></ruby>してみて。",
-       answer:["高湯どおり","たかゆ通り","高湯通り","たかゆどおり","たかゆ"],
+       hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書の<ruby>蔵王温泉<rt>ざおうおんせん</rt></ruby>についての説明のところに書いてあるよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
+       answer:["高湯どおり","たかゆ通り","高湯通り","たかゆどおり","たかゆ","高湯"],
        story:"<ruby>温泉<rt>おんせん</rt></ruby>の<ruby>香<rt>かお</rt></ruby>りとともに、一枚の羽根がふわりと風に<ruby>舞<rt>ま</rt></ruby>い降りてきた。",
       },
       {
-       id: "y4", name: "樹氷の謎", x: 450, y: 180,
-       title: "謎その九：樹氷の謎",
-       desc: "<ruby>樹氷原<rt>じゅひょうげん</rt></ruby>の入口で、白く凍りついた木々が並んでいる。",
-       visual: "<ruby>樹氷<rt>じゅひょう</rt></ruby>が行っているとある<ruby>調整<rt>ちょうせい</rt></ruby>は何？",
-       hint: "<ruby>冒険<rt>ぼうけん</rt></ruby>の書の<ruby>樹氷<rt>じゅひょう</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>をよく読んでみてね。",
-       answer: ["積雪量", "せきせつりょう", "積雪量の調整", "せきせつりょうのちょうせい"],
-       story: "<ruby>白銀<rt>はくぎん</rt></ruby>の世界に包まれた<ruby>樹氷<rt>じゅひょう</rt></ruby>のあいだで、ふわりと羽が降りてきた。"
+       id: "y4", name: "蔵王御釜", x: 450, y: 180,
+       title: "謎その四：御釜の形",
+       desc: "<ruby>大自然<rt>だいしぜん</rt></ruby>が生み出した<ruby>神秘的<rt>しんぴてき</rt></ruby>な<ruby>光景<rt>こうけい</rt></ruby>が目の前に広がっている。",
+       visual: "<ruby>太古<rt>たいこ</rt></ruby>の<ruby>噴火<rt>ふんか</rt></ruby>で生まれた<ruby>蔵王<rt>ざおう</rt></ruby>の<ruby>御釜<rt></rt></ruby>はどのような形をしているか。",
+       hint: "<ruby>冒険<rt>ぼうけん</rt></ruby>の書の<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>に<ruby>紹介<rt>しょうかい</rt></ruby>されているよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
+       answer: ["お鍋","鍋","なべ","おなべ"],
+       story: "風に乗って、小さな羽根が手のひらへと<ruby>舞<rt>ま</rt></ruby>い<ruby>降<rt>お</rt></ruby>りてきた。"
       },
       {
         id:"y5", name:"色の変わる湖", x:220, y:180,
-        title:"謎その二：色が変わる水",
+        title:"謎その五：色が変わる水",
         desc:"<ruby>湖<rt>みずうみ</rt></ruby>の<ruby>水面<rt>すいめん</rt></ruby>が太陽の光を受けて、宝石のように<ruby>輝<rt>かがや</rt></ruby>いている。",
         visual:"<ruby>季節<rt>きせつ</rt></ruby>や<ruby>天候<rt>てんこう</rt></ruby>で色が変わるのはドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のどっち？",
-        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のページに<ruby>説明<rt>せつめい</rt></ruby>が<ruby>紹介<rt>しょうかい</rt></ruby>されているよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
-        answer:["ざおうおかま","蔵王御釜","蔵王おかま","ざおう御釜"],
+        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>に<ruby>紹介<rt>しょうかい</rt></ruby>されているよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
+        answer:["ざおうおかま","蔵王御釜","蔵王おかま","ざおう御釜","おかま","御釜"],
         story:"<ruby>湖<rt>みずうみ</rt></ruby>の名を<ruby>告<rt>つ</rt></ruby>げると、<ruby>水面<rt>すいめん</rt></ruby>がきらりと<ruby>輝<rt>かがや</rt></ruby>く。風に乗って、小さな羽根が手のひらへと<ruby>舞<rt>ま</rt></ruby>い<ruby>降<rt>お</rt></ruby>りてきた。",
       },
     ],
@@ -739,8 +739,8 @@ function showMasterScene(){
 
   typewriterText(
     $("#storyText"),
-    `見事だ。<br><br>
-     三枚の<ruby>羽根<rt>はね</rt></ruby>は再び一つとなった。<br><br>
+    `見事だ。<br>
+     三枚の<ruby>羽根<rt>はね</rt></ruby>は再び一つとなった。<br>
      <ruby>疾風丸<rt>はやてまる</rt></ruby>、
      お前も良き旅人に出会えたようだ。`,
 
