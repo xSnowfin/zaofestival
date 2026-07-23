@@ -36,7 +36,7 @@ const ROUTES = {
         title:"謎その二：色が変わる水",
         desc:"<ruby>湖<rt>みずうみ</rt></ruby>の<ruby>水面<rt>すいめん</rt></ruby>が太陽の光を受けて、宝石のように<ruby>輝<rt>かがや</rt></ruby>いている。",
         visual:"青色やエメラルドグリーンに変わるのはドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のどっち？",
-        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のページに<ruby>説明<rt>せつめい</rt></ruby>が<ruby>紹介<rt>しょうかい</rt></ruby>されているよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
+        hint:"<ruby>冒険<rt>ぼうけん</rt></ruby>の書のドッコ沼と<ruby>蔵王御釜<rt>ざおうおかま</rt></ruby>のページに<ruby>説明<rt>せつめい</rt></ruby>があるよ。<ruby>冒険<rt>ぼうけん</rt></ruby>の書をよく読んでみよう。",
         answer:["ドッコぬま","どっこ沼","ドッコ沼","どっこぬま"],
         story:"<ruby>湖<rt>みずうみ</rt></ruby>の名を<ruby>告<rt>つ</rt></ruby>げると、<ruby>水面<rt>すいめん</rt></ruby>がきらりと<ruby>輝<rt>かがや</rt></ruby>く。風に乗って、小さな羽根が手のひらへと<ruby>舞<rt>ま</rt></ruby>い<ruby>降<rt>お</rt></ruby>りてきた。",
       },
@@ -767,7 +767,7 @@ function goToEndingSelect(){
       box.innerHTML = "";
       const opts = [
         { key:"all_return", title:"羽根をすべて返す", desc:"疾風丸に羽根をすべて返し、<ruby>羽団扇<rt>はうちわ</rt></ruby>を元通りにする。" },
-        { key:"keep_one", title:"一枚だけ残す", desc:"一枚の羽根を記念に残し、五枚を返す。" },
+        { key:"keep_one", title:"一枚だけ残す", desc:"一枚の羽根を記念に残し、四枚を返す。" },
       ];
       opts.forEach(opt => {
         const btn = document.createElement("button");
