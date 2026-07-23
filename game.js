@@ -146,12 +146,12 @@ const ENDINGS = {
   all_return: {
     emoji:"🕊",
     title:"すべてを、あるべき場所へ",
-    body:"三枚の羽根をすべて<ruby>疾風丸<rt>はやてまる</rt></ruby>に返すと、<ruby>白嶺坊<rt>はくれいぼう</rt></ruby>は静かにうなずいた。「よくぞ、風に<ruby>惑<rt>まど</rt></ruby>わされず届けてくれた」。<ruby>羽団扇<rt>はうちわ</rt></ruby>は再び<ruby>師匠<rt>ししょう</rt></ruby>の手に<ruby>渡<rt>わた</rt></ruby>り、蔵王の風は<ruby>穏<rt>おだ</rt></ruby>やかに凪いだという。<ruby>疾風丸<rt>はやてまる</rt></ruby>は<ruby>深々<rt>ふかぶか</rt></ruby>と頭を下げ、いつか一人前の<ruby>天狗<rt>てんぐ</rt></ruby>になったら、また会いに来ると<ruby>約束<rt>やくそく</rt></ruby>してくれた。",
+    body:"五枚の羽根をすべて<ruby>疾風丸<rt>はやてまる</rt></ruby>に返すと、<ruby>白嶺坊<rt>はくれいぼう</rt></ruby>は静かにうなずいた。「よくぞ、風に<ruby>惑<rt>まど</rt></ruby>わされず届けてくれた」。<ruby>羽団扇<rt>はうちわ</rt></ruby>は再び<ruby>師匠<rt>ししょう</rt></ruby>の手に<ruby>渡<rt>わた</rt></ruby>り、蔵王の風は<ruby>穏<rt>おだ</rt></ruby>やかに凪いだという。<ruby>疾風丸<rt>はやてまる</rt></ruby>は<ruby>深々<rt>ふかぶか</rt></ruby>と頭を下げ、いつか一人前の<ruby>天狗<rt>てんぐ</rt></ruby>になったら、また会いに来ると<ruby>約束<rt>やくそく</rt></ruby>してくれた。",
   },
   keep_one: {
     emoji:"🪶",
     title:"一枚の羽根と、約束",
-    body:"二枚の羽根を返し、一枚だけを手元に<ruby>残<rt>のこ</rt></ruby>すことにした。<ruby>白嶺坊<rt>はくれいぼう</rt></ruby>は少し<ruby>驚<rt>おど</rt></ruby>いた顔をしたあと、優しく<ruby>微笑<rt>ほほえ</rt></ruby>んだ。「その羽根は、きみと<ruby>疾風丸<rt>はやてまる</rt></ruby>を結ぶ<ruby>縁<rt>えん</rt></ruby>の<ruby>証<rt>あかし</rt></ruby>にしよう」。手のひらに残った小さな羽根は、蔵王を再び訪れるための道しるべになった。",
+    body:"四枚の羽根を返し、一枚だけを手元に<ruby>残<rt>のこ</rt></ruby>すことにした。<ruby>白嶺坊<rt>はくれいぼう</rt></ruby>は少し<ruby>驚<rt>おど</rt></ruby>いた顔をしたあと、優しく<ruby>微笑<rt>ほほえ</rt></ruby>んだ。「その羽根は、きみと<ruby>疾風丸<rt>はやてまる</rt></ruby>を結ぶ<ruby>縁<rt>えん</rt></ruby>の<ruby>証<rt>あかし</rt></ruby>にしよう」。手のひらに残った小さな羽根は、蔵王を再び訪れるための道しるべになった。",
   },
 };
 
@@ -740,7 +740,7 @@ function showMasterScene(){
   typewriterText(
     $("#storyText"),
     `見事だ。<br>
-     三枚の<ruby>羽根<rt>はね</rt></ruby>は再び一つとなった。<br>
+     五枚の<ruby>羽根<rt>はね</rt></ruby>は再び一つとなった。<br>
      <ruby>疾風丸<rt>はやてまる</rt></ruby>、
      お前も良き旅人に出会えたようだ。`,
 
@@ -761,13 +761,13 @@ function goToEndingSelect(){
   showView("endingSelect");
   $("#masterText").innerHTML = "";
   typewriterText($("#masterText"),
-    "……よくぞ、三枚の羽根を集めてくれた。さて、この<ruby>羽団扇<rt>はうちわ</rt></ruby>をどうするか、きみに委ねよう。",
+    "……よくぞ、五枚の羽根を集めてくれた。さて、この<ruby>羽団扇<rt>はうちわ</rt></ruby>をどうするか、きみに委ねよう。",
     () => {
       const box = $("#endingChoices");
       box.innerHTML = "";
       const opts = [
         { key:"all_return", title:"羽根をすべて返す", desc:"疾風丸に羽根をすべて返し、<ruby>羽団扇<rt>はうちわ</rt></ruby>を元通りにする。" },
-        { key:"keep_one", title:"一枚だけ残す", desc:"一枚の羽根を記念に残し、二枚を返す。" },
+        { key:"keep_one", title:"一枚だけ残す", desc:"一枚の羽根を記念に残し、五枚を返す。" },
       ];
       opts.forEach(opt => {
         const btn = document.createElement("button");
